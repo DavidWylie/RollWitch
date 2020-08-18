@@ -6,15 +6,6 @@
 
 A fork of dicemaiden.
 
-# Quick Install
-Follow the link to add the bot to your discord server :
-
-https://discordapp.com/api/oauth2/authorize?client_id=572301609305112596&scope=bot&permissions=11264
-
-This will authorize the bot for your server and you should see it in your default public channel. The bot will have permissions to read, send and manage messages.
-
-**NOTE:** When you first add the bot to your server, it may show up as offline. This is normal! It can take some time for your server to be cached by the bot.
-
 # Manual Install
 If you wish to host this yourself, utilize dice_maiden_lite.rb. Dice Maiden requires ruby version 2.3+. There are a handful of gems required as well which are listed in the Gemfile. You will also need to create a bot which can be done at the [discord developer section](https://discordapp.com/developers/applications/me)
 

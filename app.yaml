@@ -1,0 +1,8 @@
+runtime: ruby
+api_version: 2
+threadsafe: true
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 0.5
+  memory_gb: 512
