@@ -1,7 +1,7 @@
 runtime: ruby26
 api_version: 2
 threadsafe: true
-entrypoint: bundle exec ruby dice_maiden_lite.rb
+entrypoint: 'bundle exec ruby dice_maiden_lite.rb'
 manual_scaling:
   instances: 1
 

@@ -6,9 +6,3 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
     timeout: '1600s'
-
-substitutions:
-  _DISCORD_TOKEN: 'test'
-
-options:
-  substitution_option: 'ALLOW_LOOSE'
