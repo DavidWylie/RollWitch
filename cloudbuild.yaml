@@ -10,6 +10,7 @@ steps:
     - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
     args: ['app', 'deploy']
     timeout: '1600s'
 
