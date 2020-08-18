@@ -12,3 +12,5 @@ steps:
     timeout: '1600s'
 substitutions:
   _DISCORD_TOKEN: test
+options:
+  substituion_option: 'ALLOW_LOOSE'
