@@ -1,8 +1,20 @@
 steps:
-  - name: 'gcr.io/cloud-builders/node'
+  - name: 'node'
     entrypoint: npm
     args: ['install']
+
+  - name: 'node'
+    entrypoint: npm
+    args: ['run','create-env']
+    env:
+    - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
     timeout: '1600s'
+
+substitutions:
+  _DISCORD_TOKEN: 'test'
+
+options:
+  substitution_option: 'ALLOW_LOOSE'
