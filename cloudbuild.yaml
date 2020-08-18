@@ -1,9 +1,9 @@
 steps:
-  - name: node:10:15.1
+  - name: 'node:10:15.1'
     entrypoint: npm
     args: ['install']
 
-  - name: node:10.15.1
+  - name: 'node:10.15.1'
     entrypoint: npm
     args: ['run','create-env']
     env:
@@ -14,7 +14,7 @@ steps:
     timeout: '1600s'
 
 substitutions:
-  _DISCORD_TOKEN: test
+  _DISCORD_TOKEN: 'test'
 
 options:
   substitution_option: 'ALLOW_LOOSE'
