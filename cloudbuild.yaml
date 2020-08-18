@@ -13,4 +13,4 @@ steps:
 substitutions:
   _DISCORD_TOKEN: test
 options:
-  substituion_option: 'ALLOW_LOOSE'
+  substitution_option: 'ALLOW_LOOSE'
