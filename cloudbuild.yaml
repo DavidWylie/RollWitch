@@ -9,7 +9,7 @@ steps:
     env:
     - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
 
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/cloud-sdk'
     args: ['app', 'deploy']
     timeout: '1600s'
 
