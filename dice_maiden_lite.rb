@@ -12,6 +12,7 @@ require 'dotenv'
 
 Dotenv.load
 # Add API token
+warning
 @bot = Discordrb::Bot.new token: ENV['TOKEN'], ignore_bots: true, fancy_log: true
 
 # Check for command
