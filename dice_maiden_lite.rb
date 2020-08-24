@@ -11,8 +11,7 @@ require 'dicebag'
 require 'dotenv'
 
 Dotenv.load
-# Add API token
-ENV.Print
+
 @bot = Discordrb::Bot.new token: ENV['TOKEN'], ignore_bots: true, fancy_log: true
 
 # Check for command
