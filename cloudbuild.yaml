@@ -9,6 +9,10 @@ steps:
     env:
     - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
 
+  - name: "bundler"
+    entrypoint: 'bundle'
+    args: ['install' '--path vendor/bundle']
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: ['app', 'deploy']

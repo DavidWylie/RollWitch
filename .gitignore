@@ -1,5 +1,4 @@
 .idea
 .bundle
-vendor
 node_nodules
 package-lock.json
