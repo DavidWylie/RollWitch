@@ -2,3 +2,5 @@
 .bundle
 node_nodules
 package-lock.json
+.env
+venv
