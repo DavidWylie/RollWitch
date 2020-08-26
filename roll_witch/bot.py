@@ -1,28 +1,23 @@
 import os
-
 import discord
 from dotenv import load_dotenv
 from roll_witch import roller
 
 
-def start_bot():
-    load_dotenv()
-    TOKEN = os.getenv('DISCORD_TOKEN')
+class EventListenerClient(discord.Client):
+    def __init__(self,  *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-    client = discord.Client()
-
-    @client.event
-    async def on_ready():
-        print(f'{client.user} has connected to Discord!')
-        for guild in client.guilds:
+    async def on_ready(self):
+        print(f'{self.user} has connected to Discord!')
+        for guild in self.guilds:
             print(
-                f'{client.user} is connected to the following guild:\n'
+                f'{self.user} is connected to the following guild:\n'
                 f'{guild.name}(id: {guild.id})'
             )
 
-    @client.event
-    async def on_message(message):
-        if message.author == client.user:
+    async def on_message(self, message):
+        if message.author == self.user:
             return
 
         if message.content.startswith('!roll'):
@@ -32,8 +27,9 @@ def start_bot():
             response = roller.roll_percentile(message.content[3:], message.author.display_name)
             await message.channel.send(response)
 
-    client.run(TOKEN)
 
+def start_bot():
+    load_dotenv()
+    TOKEN = os.getenv('DISCORD_TOKEN')
+    return EventListenerClient().start(TOKEN)
 
-if __name__ == '__main__':
-    start_bot()
