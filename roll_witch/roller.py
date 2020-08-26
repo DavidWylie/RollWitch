@@ -18,7 +18,6 @@ def roll_percentile(roll_string, user):
 
 
 def write_output(roll_result: RollResult, user):
-    print(f"Roll Result: {roll_result}")
     if roll_result.spec.modifier != 0:
         if roll_result.spec.modifier > 0:
             total_string = f"{roll_result.total} + {roll_result.spec.modifier}"
@@ -40,7 +39,7 @@ def do_roll(roll_spec: RollSpec):
 
     return RollResult(
         total=roll_total,
-        rolls= roll_results,
+        rolls=roll_results,
         spec=roll_spec,
         had_target=had_target,
         met_target=met_target
@@ -75,14 +74,12 @@ def roll_die(roll_spec):
     if roll == 100 and roll_spec.dice_sides == 100:
         roll = 0
 
-    print(f"rolled: {roll}")
     return roll
 
 
 def parse_roll_string(roll_string):
     target_match = target_spec.fullmatch(roll_string)
     if target_match:
-        print(f"Target Match: {target_match}")
         return RollSpec(
             dice_count=int(target_match.group(1)),
             dice_sides=int(target_match.group(2)),
@@ -92,7 +89,6 @@ def parse_roll_string(roll_string):
 
     modifier_match = modifier_spec.fullmatch(roll_string)
     if modifier_match:
-        print(f"Modifier Match: {modifier_match}")
         return RollSpec(
             dice_count=int(modifier_match.group(1)),
             dice_sides=int(modifier_match.group(2)),

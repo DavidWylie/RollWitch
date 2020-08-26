@@ -1,4 +1,3 @@
-# bot.py
 import os
 
 import discord
@@ -10,6 +9,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
 
+
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
@@ -19,14 +19,19 @@ async def on_ready():
             f'{guild.name}(id: {guild.id})'
         )
 
+
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('!roll 1d100'):
+    if message.content.startswith('!roll'):
         response = roller.roll_percentile(message.content[6:], message.author.display_name)
         await message.channel.send(response)
+    elif message.content.startswith('!r'):
+        response = roller.roll_percentile(message.content[3:], message.author.display_name)
+        await message.channel.send(response)
+
 
 if __name__ == '__main__':
     client.run(TOKEN)

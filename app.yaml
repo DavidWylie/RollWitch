@@ -1,6 +1,4 @@
-runtime: ruby26
-threadsafe: true
-entrypoint: bundle exec ruby dice_maiden_lite.rb
+runtime: python38
 
 manual_scaling:
   instances: 1
