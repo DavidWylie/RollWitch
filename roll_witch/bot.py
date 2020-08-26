@@ -33,3 +33,7 @@ def start_bot():
             await message.channel.send(response)
 
     client.run(TOKEN)
+
+
+if __name__ == '__main__':
+    start_bot()
