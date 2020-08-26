@@ -7,7 +7,7 @@ steps:
     entrypoint: npm
     args: ['run','create-env']
     env:
-    - 'TOKEN=${_DISCORD_TOKEN}'
+    - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
 
   - name: gcr.io/cloud-builders/docker
     args:
