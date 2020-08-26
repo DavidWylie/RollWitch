@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "create-env": "printenv > .env && cat .env"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
