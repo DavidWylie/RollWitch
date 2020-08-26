@@ -1,17 +1,21 @@
 from roll_witch import bot
 from aiohttp import web
 import asyncio
+from dotenv import load_dotenv
+import os
 
 async def handle(request):
     text = "Hello"
     return web.Response(text=text)
 
 async def start_app():
+    load_dotenv()
+    PORT = os.getenv('PORT')
     app = web.Application()
     app.router.add_get('/', handle)
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, '127.0.0.1', 8080)
+    site = web.TCPSite(runner, '0.0.0.0', PORT)
     await site.start()
 
 if __name__ == '__main__':
