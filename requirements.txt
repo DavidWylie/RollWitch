@@ -1,3 +1,4 @@
 discord.py
 python-dotenv
 Flask==1.1.2
+Flask-discord
