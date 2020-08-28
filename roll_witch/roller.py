@@ -2,8 +2,8 @@ import re
 from collections import namedtuple
 from random import randint
 
-target_spec = re.compile(r"(\d)d(\d+)\st([\-]*[0-9]+)")
-modifier_spec = re.compile(r"(\d)d([0-9]+)\s*[+\-]*([0-9]*)")
+target_spec = re.compile(r"(\d+)d(\d+)\st([\-]*[0-9]+)")
+modifier_spec = re.compile(r"(\d)d(\d+)\s*[+\-]*([0-9]*)")
 RollSpec = namedtuple('RollSpec', ['dice_count', 'dice_sides', 'modifier', 'target_number'])
 RollResult = namedtuple('RollResult', ['total', 'rolls', 'spec', 'had_target', 'met_target'])
 
