@@ -53,7 +53,7 @@ def check_target(roll_spec, roll_total):
         if roll_spec.target_number >= 0:
             met_target = roll_total > roll_spec.target_number
         else:
-            met_target = roll_total <= roll_spec.target_number
+            met_target = roll_total <= abs(roll_spec.target_number)
     return had_target, met_target
 
 
