@@ -3,7 +3,7 @@ from collections import namedtuple
 from random import randint
 
 target_spec = re.compile(r"(\d+)d(\d+)\st([\-]*[0-9]+)")
-modifier_spec = re.compile(r"(\d)d(\d+)\s*[+\-]*([0-9]*)")
+modifier_spec = re.compile(r"(\d+)d(\d+)\s*([+\-])*([0-9]*)")
 RollSpec = namedtuple('RollSpec', ['dice_count', 'dice_sides', 'modifier', 'target_number'])
 RollResult = namedtuple('RollResult', ['total', 'rolls', 'spec', 'had_target', 'met_target'])
 
@@ -14,7 +14,7 @@ def roll_percentile(roll_string, user):
         roll_result = do_roll(roll_spec)
         return write_output(roll_result, user)
     except Exception as e:
-        print(f"Error {e}")
+        return f"Error rolling dice \n {e}"
 
 
 def write_output(roll_result: RollResult, user):
@@ -88,10 +88,20 @@ def parse_roll_string(roll_string):
         )
 
     modifier_match = modifier_spec.fullmatch(roll_string)
+
     if modifier_match:
+        if modifier_match.group(3):
+            if modifier_match.group(3) == '+':
+                modifier = int(modifier_match.group(4))
+            else:
+                modifier = -int(modifier_match.group(4))
+        else:
+            modifier = 0
+        modifier_match.group(4) if modifier_match.group(4) else 0
+
         return RollSpec(
             dice_count=int(modifier_match.group(1)),
             dice_sides=int(modifier_match.group(2)),
-            modifier=int(modifier_match.group(3) if modifier_match.group(3) else 0),
+            modifier=modifier,
             target_number=None
         )
