@@ -20,9 +20,9 @@ def roll_percentile(roll_string, user):
 def write_output(roll_result: RollResult, user):
     if roll_result.spec.modifier != 0:
         if roll_result.spec.modifier > 0:
-            total_string = f"{roll_result.total} + {roll_result.spec.modifier}"
+            total_string = f"[{roll_result.rolls}] = {roll_result.total} + {roll_result.spec.modifier}"
         else:
-            total_string = f"{roll_result.total} {roll_result.spec.modifier}"
+            total_string = f"[{roll_result.rolls}] = {roll_result.total} {roll_result.spec.modifier}"
     else:
         total_string = f"{roll_result.total}"
 
@@ -62,10 +62,9 @@ def roll_dice(roll_spec):
     roll_total = 0
     for dice in range(0, roll_spec.dice_count):
         roll = roll_die(roll_spec)
-
         roll_results.append(roll)
-        roll_total += roll
-    roll_total += roll_spec.modifier
+        roll_total = roll_total + roll
+    roll_total = roll_total + roll_spec.modifier
     return roll_results, roll_total
 
 
