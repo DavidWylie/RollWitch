@@ -9,50 +9,11 @@ steps:
     env:
     - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
 
-  - name: gcr.io/cloud-builders/docker
-    args:
-      - build
-      - '--no-cache'
-      - '-t'
-      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
-      - .
-      - '-f'
-      - Dockerfile
-    id: Build
-  - name: gcr.io/cloud-builders/docker
-    args:
-      - push
-      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
-    id: Push
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
-    args:
-      - run
-      - services
-      - update
-      - $_SERVICE_NAME
-      - '--platform=managed'
-      - '--image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
-      - >-
-        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,$_LABELS
-      - '--region=$_DEPLOY_REGION'
-      - '--quiet'
-    id: Deploy
-    entrypoint: gcloud
-images:
-  - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
-
-tags:
-  - gcp-cloud-build-deploy-cloud-run
-  - gcp-cloud-build-deploy-cloud-run-managed
-  - roll-witch
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args: ['app', 'deploy']
+    timeout: '1600s'
 
 substitutions:
-  _TRIGGER_ID: 16f5d2c3-11fe-4f5a-aaba-0100e2f82310
-  _SERVICE_NAME: roll-witch
-  _DEPLOY_REGION: europe-west1
-  _GCR_HOSTNAME: eu.gcr.io
-  _PLATFORM: managed
-  _LABELS: gcb-trigger-id=16f5d2c3-11fe-4f5a-aaba-0100e2f82310
   _DISCORD_TOKEN: 'test'
 
 options:
