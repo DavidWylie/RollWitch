@@ -20,11 +20,11 @@ def roll_percentile(roll_string, user):
 def write_output(roll_result: RollResult, user):
     if roll_result.spec.modifier != 0:
         if roll_result.spec.modifier > 0:
-            total_string = f"[{roll_result.rolls}] = {roll_result.total} + {roll_result.spec.modifier}"
+            total_string = f"{roll_result.rolls} = {roll_result.total} + {roll_result.spec.modifier}"
         else:
-            total_string = f"[{roll_result.rolls}] = {roll_result.total} {roll_result.spec.modifier}"
+            total_string = f"{roll_result.rolls} = {roll_result.total} {roll_result.spec.modifier}"
     else:
-        total_string = f"{roll_result.total}"
+        total_string = f"{roll_result.rolls} = {roll_result.total}"
 
     if roll_result.had_target:
         success_string = 'Success' if roll_result.met_target else 'Failed'
