@@ -1,7 +1,7 @@
 import os
 import discord
 from dotenv import load_dotenv
-from roll_witch import roller
+from . import operation
 
 
 class EventListenerClient(discord.Client):
@@ -21,15 +21,14 @@ class EventListenerClient(discord.Client):
             return
 
         if message.content.startswith('!roll'):
-            response = roller.roll_percentile(message.content[6:], message.author.display_name)
+            response = operation.get_roll_operation(message.content[6:], message.author.display_name)
             await message.channel.send(response)
         elif message.content.startswith('!r'):
-            response = roller.roll_percentile(message.content[3:], message.author.display_name)
+            response = operation.get_roll_operation(message.content[3:], message.author.display_name)
             await message.channel.send(response)
 
 
 def start_bot():
     load_dotenv()
-    TOKEN = os.getenv('DISCORD_TOKEN')
-    return EventListenerClient().start(TOKEN)
-
+    client_token = os.getenv('DISCORD_TOKEN')
+    return EventListenerClient().start(client_token)
