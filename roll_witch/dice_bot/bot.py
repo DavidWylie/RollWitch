@@ -19,13 +19,23 @@ class EventListenerClient(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:
             return
+        try:
+            bot_operation = self.get_bot_operation(message)
+            if bot_operation:
+                response = bot_operation.execute()
+                await message.channel.send(response)
+        except ValueError:
+            await message.channel.send(f" {message.author.display_name}: Invalid Command")
 
+    @staticmethod
+    def get_bot_operation(message):
+        bot_operation = None
         if message.content.startswith('!roll'):
-            response = operation.get_roll_operation(message.content[6:], message.author.display_name).execute()
-            await message.channel.send(response)
+            bot_operation = operation.get_roll_operation(message.content[6:], message.author.display_name)
+
         elif message.content.startswith('!r'):
-            response = operation.get_roll_operation(message.content[3:], message.author.display_name).execute()
-            await message.channel.send(response)
+            bot_operation = operation.get_roll_operation(message.content[3:], message.author.display_name)
+        return bot_operation
 
 
 def start_bot():
