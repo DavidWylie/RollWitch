@@ -21,10 +21,10 @@ class EventListenerClient(discord.Client):
             return
 
         if message.content.startswith('!roll'):
-            response = operation.get_roll_operation(message.content[6:], message.author.display_name)
+            response = operation.get_roll_operation(message.content[6:], message.author.display_name).execute()
             await message.channel.send(response)
         elif message.content.startswith('!r'):
-            response = operation.get_roll_operation(message.content[3:], message.author.display_name)
+            response = operation.get_roll_operation(message.content[3:], message.author.display_name).execute()
             await message.channel.send(response)
 
 
