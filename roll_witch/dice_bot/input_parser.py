@@ -43,4 +43,5 @@ def parse(roll_string):
         match = regex.fullmatch(roll_string)
         if match:
             return matchers.get(spec_name)(match)
-    return None
+
+    raise ValueError("Unknown spec")
