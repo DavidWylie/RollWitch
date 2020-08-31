@@ -1,4 +1,4 @@
-from random import randint
+import random
 from . import RollSpec, RollResult
 
 
@@ -24,7 +24,7 @@ class StandardRoller():
         roll_result.apply_modifier(self.spec.dice_modifier)
 
     def roll_dice(self):
-        roll = randint(0, self.dice_sides())
+        roll = random.randint(0, self.dice_sides())
         return 0 if self._reset_percentiles(roll) else roll
 
     def _reset_percentiles(self, roll):
@@ -32,7 +32,7 @@ class StandardRoller():
 
 
 class TargetedRoller(StandardRoller):
-    def do_roll(self) -> RollResult:
+    def roll(self) -> RollResult:
         roll_result = RollResult(spec=self.spec)
         self.roll_dice_set(roll_result)
         roll_result.met_target = self.met_target(roll_result.total)

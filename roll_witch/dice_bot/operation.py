@@ -16,7 +16,7 @@ class RollOperation():
 
     def execute(self):
         try:
-            roll_result = self.roller.do_roll()
+            roll_result = self.roller.roll()
             return self.output.write_output(roll_result, self.user)
         except Exception as e:
             return f"Error rolling dice \n {e}"

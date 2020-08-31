@@ -1,4 +1,4 @@
-from roll_witch.roller import bot
+from roll_witch.dice_bot import bot
 from roll_witch.web_app import router
 import asyncio
 
