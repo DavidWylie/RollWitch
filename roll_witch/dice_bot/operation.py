@@ -19,10 +19,12 @@ class RollOperation():
             roll_result = self.roller.roll()
             output = self.output.write_output(roll_result, self.user)
             if len(output) > 2000:
-                raise Exception(f"I ain't Dead \n  Your answer is just too big to give you")
+                raise ValueError()
             return output
+        except ValueError as e:
+            raise Exception(f"I ain't Dead \n  Your answer is just too big to give you")
         except Exception as e:
-            raise Exception(f"Error rolling dice \n {e}")
+            raise Exception(f"I ain't Dead \n {e}")
 
 
 def get_roll_operation(roll_string, user):
