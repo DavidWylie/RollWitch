@@ -75,10 +75,12 @@ class TestStandardRoller(TestCase):
         value = roller.roll_dice()
         self.assertEqual(3, value)
 
-    @patch("random.randint")
-    def test_roll_dice_percentile(self, mock_random):
-        mock_random.return_value = 100
-        spec = RollSpec(dice_count=1, dice_sides=100)
-        roller = StandardRoller(spec)
-        value = roller.roll_dice()
-        self.assertEqual(0, value)
+    def test_roll_dice(self):
+        values = []
+        for i in range(0,1000):
+            spec = RollSpec(dice_count=1, dice_sides=100)
+            roller = StandardRoller(spec)
+            value = roller.roll_dice()
+            values.append(value)
+            self.assertGreater(value, 0)
+        print(values)

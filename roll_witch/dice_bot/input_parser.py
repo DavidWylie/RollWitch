@@ -4,8 +4,13 @@ import re
 
 
 def create_target_spec(target_match: Match):
+    if target_match.group(1):
+        dice_count = int(target_match.group(1))
+    else:
+        dice_count = 1
+
     return RollSpec(
-        dice_count=int(target_match.group(1)),
+        dice_count=int(dice_count),
         dice_sides=int(target_match.group(2)),
         modifier=0,
         target_number=int(target_match.group(3))
@@ -21,8 +26,13 @@ def create_modifier_spec(modifier_match: Match):
     else:
         modifier = 0
 
+    if modifier_match.group(1):
+        dice_count = int(modifier_match.group(1))
+    else:
+        dice_count = 1
+
     return RollSpec(
-        dice_count=int(modifier_match.group(1)),
+        dice_count=dice_count,
         dice_sides=int(modifier_match.group(2)),
         modifier=modifier,
         target_number=None
@@ -31,8 +41,8 @@ def create_modifier_spec(modifier_match: Match):
 
 def parse(roll_string):
     spec_regex = {
-        'target_spec': re.compile(r"(\d+)d(\d+)\st([\-]*[0-9]+)"),
-        'modifier_spec': re.compile(r"(\d+)d(\d+)\s*([+\-])*([0-9]*)")
+        'target_spec': re.compile(r"(\d*)d(\d+)\st([\-]*[0-9]+)"),
+        'modifier_spec': re.compile(r"(\d*)d(\d+)\s*([+\-])*([0-9]*)")
     }
     matchers = {
         'target_spec': create_target_spec,

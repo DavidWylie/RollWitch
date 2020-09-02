@@ -1,5 +1,9 @@
 import random
 from . import RollSpec, RollResult
+from datetime import datetime
+
+now = datetime.now()
+random.seed(int(f"{now.microsecond}{now.month}{now.second}{now.day}"))
 
 
 class StandardRoller():
