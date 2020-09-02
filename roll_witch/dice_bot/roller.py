@@ -24,7 +24,7 @@ class StandardRoller():
         roll_result.apply_modifier(self.spec.dice_modifier)
 
     def roll_dice(self):
-        roll = random.randint(0, self.dice_sides())
+        roll = random.randint(1, self.dice_sides())
         return 0 if self._reset_percentiles(roll) else roll
 
     def _reset_percentiles(self, roll):
