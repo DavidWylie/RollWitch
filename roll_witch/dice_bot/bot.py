@@ -31,7 +31,7 @@ class EventListenerClient(discord.Client):
                 msg = e.message
             else:
                 msg = str(e)
-            await message.channel.send(f"{message.author.display_name}: {msg}")
+            await message.channel.send(f"I ain't Dead \n  {message.author.display_name}: {msg}")
 
     @staticmethod
     def get_bot_operation(message):

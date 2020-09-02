@@ -22,9 +22,9 @@ class RollOperation():
                 raise ValueError()
             return output
         except ValueError as e:
-            raise Exception(f"I ain't Dead \n  Your answer is just too big to give you")
+            raise Exception(f"Your answer is just too big to give you")
         except Exception as e:
-            raise Exception(f"I ain't Dead \n {e}")
+            raise Exception(f"{e}")
 
 
 def get_roll_operation(roll_string, user):
