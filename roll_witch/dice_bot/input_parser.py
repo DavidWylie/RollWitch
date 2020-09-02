@@ -54,4 +54,4 @@ def parse(roll_string):
         if match:
             return matchers.get(spec_name)(match)
 
-    raise ValueError("Unknown spec")
+    raise Exception("Roll What?  Try again  e.g. roll 1d10 +10 or roll 1d6 t6")

@@ -26,6 +26,12 @@ class EventListenerClient(discord.Client):
                 await message.channel.send(response)
         except ValueError:
             await message.channel.send(f" {message.author.display_name}: Invalid Command")
+        except Exception as e:
+            if hasattr(e, 'message'):
+                msg = e.message
+            else:
+                msg = str(e)
+            await message.channel.send(f"{message.author.display_name}: {msg}")
 
     @staticmethod
     def get_bot_operation(message):

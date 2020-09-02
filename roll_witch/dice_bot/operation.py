@@ -17,11 +17,16 @@ class RollOperation():
     def execute(self):
         try:
             roll_result = self.roller.roll()
-            return self.output.write_output(roll_result, self.user)
+            output = self.output.write_output(roll_result, self.user)
+            if len(output) > 2000:
+                raise Exception(f"I ain't Dead \n  Your answer is just too big to give you")
+            return output
         except Exception as e:
-            return f"Error rolling dice \n {e}"
+            raise Exception(f"Error rolling dice \n {e}")
 
 
 def get_roll_operation(roll_string, user):
     roll_spec = input_parser.parse(roll_string)
+    if roll_spec.dice_count > 10000:
+        raise Exception("How many?  You must be joking.")
     return RollOperation(roll_spec, user)
