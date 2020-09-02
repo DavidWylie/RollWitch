@@ -82,21 +82,3 @@ class TestStandardRoller(TestCase):
         roller = StandardRoller(spec)
         value = roller.roll_dice()
         self.assertEqual(0, value)
-
-    def test__reset_percentiles_reset(self):
-        spec = RollSpec(dice_count=1, dice_sides=100)
-        roller = StandardRoller(spec)
-        result = roller._reset_percentiles(100)
-        self.assertEqual(True, result)
-
-    def test__reset_percentiles_wrong_dice_size(self):
-        spec = RollSpec(dice_count=1, dice_sides=200)
-        roller = StandardRoller(spec)
-        result = roller._reset_percentiles(100)
-        self.assertEqual(False, result)
-
-    def test__reset_percentiles_wrong_value(self):
-        spec = RollSpec(dice_count=1, dice_sides=200)
-        roller = StandardRoller(spec)
-        result = roller._reset_percentiles(50)
-        self.assertEqual(False, result)
