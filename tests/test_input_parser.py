@@ -5,8 +5,8 @@ from roll_witch.dice_bot.input_parser import RegexInputParser
 
 class TestRegexInputParser(TestCase):
     @given(
-        dice_count=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        dice_sides=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1)
+        dice_count=strategies.integers(min_value=1, max_value=100),
+        dice_sides=strategies.integers(min_value=1, max_value=100)
     )
     def test_parse_simple_dice(self, dice_count, dice_sides):
         input_parser = RegexInputParser()
@@ -18,9 +18,9 @@ class TestRegexInputParser(TestCase):
         self.assertIsNone(spec.target_number, f"Target Number in {element} is invalid")
 
     @given(
-        dice_count=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        dice_sides=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        modifier=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1)
+        dice_count=strategies.integers(min_value=1, max_value=100),
+        dice_sides=strategies.integers(min_value=1, max_value=100),
+        modifier=strategies.integers(min_value=1, max_value=100)
     )
     def test_parse_simple_dice_with_positive_modifier(self, dice_count, dice_sides, modifier):
         input_parser = RegexInputParser()
@@ -32,9 +32,9 @@ class TestRegexInputParser(TestCase):
         self.assertIsNone(spec.target_number, f"Target Number in {element} is invalid")
 
     @given(
-        dice_count=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        dice_sides=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        modifier=strategies.integers(min_value=-100, max_value=0).filter(lambda x: x != 1)
+        dice_count=strategies.integers(min_value=1, max_value=100),
+        dice_sides=strategies.integers(min_value=1, max_value=100),
+        modifier=strategies.integers(min_value=-100, max_value=0)
     )
     def test_parse_simple_dice_with_negative_modifier(self, dice_count, dice_sides, modifier):
         input_parser = RegexInputParser()
@@ -46,9 +46,9 @@ class TestRegexInputParser(TestCase):
         self.assertIsNone(spec.target_number, f"Target Number in {element} is invalid")
 
     @given(
-        dice_count=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        dice_sides=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        target=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1)
+        dice_count=strategies.integers(min_value=1, max_value=100),
+        dice_sides=strategies.integers(min_value=1, max_value=100),
+        target=strategies.integers(min_value=1, max_value=100)
     )
     def test_parse_lower_target_dice(self, dice_count, dice_sides, target):
         input_parser = RegexInputParser()
@@ -61,9 +61,9 @@ class TestRegexInputParser(TestCase):
         self.assertEqual(-target, spec.target_number, f"Target Does not match")
 
     @given(
-        dice_count=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        dice_sides=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        target=strategies.integers(min_value=-100, max_value=0).filter(lambda x: x != 1)
+        dice_count=strategies.integers(min_value=1, max_value=100),
+        dice_sides=strategies.integers(min_value=1, max_value=100),
+        target=strategies.integers(min_value=-100, max_value=0)
     )
     def test_parse_lower_target_dice(self, dice_count, dice_sides, target):
         input_parser = RegexInputParser()
@@ -76,9 +76,9 @@ class TestRegexInputParser(TestCase):
         self.assertEqual(target, spec.target_number, f"Target Does not match")
 
     @given(
-        dice_count=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        dice_sides=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1),
-        target=strategies.integers(min_value=1, max_value=100).filter(lambda x: x != 1)
+        dice_count=strategies.integers(min_value=1, max_value=100),
+        dice_sides=strategies.integers(min_value=1, max_value=100),
+        target=strategies.integers(min_value=1, max_value=100)
     )
     def test_parse_above_target_dice(self, dice_count, dice_sides, target):
         input_parser = RegexInputParser()
