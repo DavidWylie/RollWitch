@@ -1,6 +1,9 @@
-from . import RollSpec, input_parser
+from . import RollSpec
+from .input_parser import RegexInputParser
 from .output_parser import TargetedOutputWriter, StandardOutputWriter
 from .roller import StandardRoller, TargetedRoller
+
+regex_input_parser = RegexInputParser()
 
 
 class RollOperation():
@@ -28,7 +31,8 @@ class RollOperation():
 
 
 def get_roll_operation(roll_string, user):
-    roll_spec = input_parser.parse(roll_string)
+    global regex_input_parser
+    roll_spec = regex_input_parser.parse(roll_string)
     if roll_spec.dice_count > 10000:
         raise Exception("How many?  You must be joking.")
     return RollOperation(roll_spec, user)

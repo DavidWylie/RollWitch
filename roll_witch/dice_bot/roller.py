@@ -1,9 +1,8 @@
 import random
 from . import RollSpec, RollResult
-from datetime import datetime
+from os import urandom
 
-now = datetime.now()
-random.seed(int(f"{now.microsecond}{now.month}{now.second}{now.day}"))
+random.seed(urandom(15))
 
 
 class StandardRoller():
