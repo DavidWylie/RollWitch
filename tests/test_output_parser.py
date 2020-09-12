@@ -1,6 +1,7 @@
 from unittest import TestCase
-from roll_witch.dice_bot.output_parser import StandardOutputWriter, TargetedOutputWriter
-from roll_witch.dice_bot import RollResult, RollSpec
+from roll_witch.dice_bot.output import StandardOutputWriter, TargetedOutputWriter
+from roll_witch.dice_bot.spec import RollSpec
+from roll_witch.dice_bot.result import RollResult
 
 
 class TestStandardOutputWriter(TestCase):

@@ -8,8 +8,8 @@ async def handle(request):
 
 async def start_app():
     app = web.Application()
-    app.router.add_get('/', handle)
+    app.router.add_get("/", handle)
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, '0.0.0.0', 8080)
+    site = web.TCPSite(runner, "0.0.0.0", 8080)
     await site.start()
