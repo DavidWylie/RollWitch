@@ -45,4 +45,4 @@ class RollResult(Result):
 
     @property
     def operator(self):
-        return self.roll_spec.operation
+        return self.roll_spec.operator

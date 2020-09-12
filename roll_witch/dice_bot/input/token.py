@@ -62,12 +62,23 @@ class TokenInputParser:
         return match
 
     def parse(self, roll_string: str):
-        parts = roll_string.replace(" + ", "+").replace("+", " +").split()
+        parts = self.sanitise_operators(roll_string).split()
         spec = OperationSpec()
         for part in parts:
             part_spec = self.parse_part(part)
             spec.add_part(part_spec)
         return spec
+
+    def sanitise_operators(self, roll_string) -> str:
+        sanitized_string = self._sanitize_operator('+', roll_string)
+        sanitized_string = self._sanitize_operator('-', sanitized_string)
+        return sanitized_string
+
+    def _sanitize_operator(self, operator, string):
+        return string\
+            .replace(f" {operator} ", operator)\
+            .replace(operator, f" {operator}")\
+            .replace(f"t {operator}", f"t{operator}")
 
     def parse_part(self, part_string):
         for spec_name, regex in self.spec_regex.items():

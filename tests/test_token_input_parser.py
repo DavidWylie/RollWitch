@@ -3,7 +3,7 @@ from hypothesis import given, strategies
 from roll_witch.dice_bot.input import TokenInputParser
 
 
-class TestRegexInputParser(TestCase):
+class TestTokenInputParser(TestCase):
     @given(
         dice_count=strategies.integers(min_value=1, max_value=100),
         dice_sides=strategies.integers(min_value=1, max_value=100)
@@ -39,7 +39,7 @@ class TestRegexInputParser(TestCase):
     @given(
         dice_count=strategies.integers(min_value=1, max_value=100),
         dice_sides=strategies.integers(min_value=1, max_value=100),
-        modifier=strategies.integers(min_value=-100, max_value=0)
+        modifier=strategies.integers(min_value=-100, max_value=-1)
     )
     def test_parse_simple_dice_with_negative_modifier(self, dice_count, dice_sides, modifier):
         input_parser = TokenInputParser()
@@ -51,7 +51,8 @@ class TestRegexInputParser(TestCase):
                          f"Dice Count in {element} does not match {dice_spec.dice_count}")
         self.assertEqual(dice_sides, dice_spec.dice_sides,
                          f"Dice Sides in {element} does not match {dice_spec.dice_sides}")
-        self.assertEqual(modifier, modifier_spec.dice_modifier, f"Dice Modifier in {element} is invalid")
+        self.assertEqual(abs(modifier), modifier_spec.dice_modifier, f"Dice Modifier in {element} is invalid")
+        self.assertEqual('-', modifier_spec.operator, f"Dice Modifier in {element} is invalid")
 
     @given(
         dice_count=strategies.integers(min_value=1, max_value=100),

@@ -10,7 +10,7 @@ class RollSpec(Targetable):
         self.dice_sides = dice_sides
         self.dice_modifier = modifier
         self.target_number = target_number
-        self.operation = operation
+        self.operator = operation
 
     def has_target(self) -> bool:
         return self.target_number is not None
