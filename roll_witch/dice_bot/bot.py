@@ -44,15 +44,15 @@ class EventListenerClient(discord.Client):
             bot_operation = operation.get_roll_operation(
                 message.content[6:], message.author.display_name
             )
-
-        elif message.content.startswith("!r"):
-            bot_operation = operation.get_roll_operation(
-                message.content[3:], message.author.display_name
-            )
         elif message.content.startswith("!r-t"):
             bot_operation = operation.get_token_roll_operation(
                 message.content[5:], message.author.display_name
             )
+        elif message.content.startswith("!r"):
+            bot_operation = operation.get_roll_operation(
+                message.content[3:], message.author.display_name
+            )
+
         return bot_operation
 
 
