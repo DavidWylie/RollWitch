@@ -1,6 +1,6 @@
 from unittest import TestCase
 from hypothesis import given, strategies
-from roll_witch.dice_bot.input_parser import RegexInputParser
+from roll_witch.dice_bot.input import RegexInputParser
 
 
 class TestRegexInputParser(TestCase):
