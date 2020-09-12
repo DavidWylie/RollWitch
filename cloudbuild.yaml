@@ -1,10 +1,8 @@
 steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
-    args: ['-c','echo "DISCORD_TOKEN=${DISCORD_TOKEN}" > .env && cat .env']
+    args: ['-c','echo "DISCORD_TOKEN=${_DISCORD_TOKEN}" > .env && cat .env']
     timeout: '60s'
-    env:
-    - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
