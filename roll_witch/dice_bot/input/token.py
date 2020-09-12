@@ -75,7 +75,7 @@ class TokenInputParser:
             if match:
                 matcher = self.matchers.get(spec_name)
                 return matcher(match)
-        raise Exception("Roll What?  Try again  e.g. roll 1d10 +10 or roll 1d6 t6")
+        raise Exception(f"Roll What?  {part_string} is not valid Try again  e.g. roll 1d10 +10 or roll 1d6 t6")
 
 
 def get_token_parser() -> TokenInputParser:
