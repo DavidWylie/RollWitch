@@ -3,9 +3,7 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c',
-      - |-
-        echo "DISCORD_TOKEN=${DISCORD_TOKEN}" > .env
-        cat .env
+      - 'echo "DISCORD_TOKEN=${DISCORD_TOKEN}" > .env && cat .env'
     timeout: '60s'
     env:
     - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
