@@ -23,8 +23,8 @@ class RollOperation:
             if len(output) > 2000:
                 raise ValueError()
             return output
-        except ValueError as e:
-            raise Exception(f"Your answer is just too big to give you")
+        except ValueError:
+            raise Exception("Your answer is just too big to give you")
         except Exception as e:
             raise Exception(f"{e}")
 

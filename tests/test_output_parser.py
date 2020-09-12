@@ -13,9 +13,7 @@ class TestStandardOutputWriter(TestCase):
         roll_result.append_roll(4)
 
         result_string = writer.build_result_string(
-            roll_result=roll_result,
-            total_string="totalString",
-            user="tester"
+            roll_result=roll_result, total_string="totalString", user="tester"
         )
         expected_result_string = "tester Roll: totalString Result: 7"
         self.assertEqual(expected_result_string, result_string)
@@ -31,9 +29,7 @@ class TestTargetedOutputWriter(TestCase):
         roll_result.met_target = True
 
         result_string = writer.build_result_string(
-            roll_result=roll_result,
-            total_string="totalString",
-            user="tester"
+            roll_result=roll_result, total_string="totalString", user="tester"
         )
         expected_result_string = "tester Roll: totalString = 7 Result: Success"
         self.assertEqual(expected_result_string, result_string)
@@ -47,9 +43,7 @@ class TestTargetedOutputWriter(TestCase):
         roll_result.met_target = False
 
         result_string = writer.build_result_string(
-            roll_result=roll_result,
-            total_string="totalString",
-            user="tester"
+            roll_result=roll_result, total_string="totalString", user="tester"
         )
         expected_result_string = "tester Roll: totalString = 7 Result: Failed"
         self.assertEqual(expected_result_string, result_string)
@@ -63,10 +57,7 @@ class TestBaseOutputWriter(TestCase):
         roll_result.append_roll(3)
         roll_result.append_roll(4)
 
-        result_string = writer.write_output(
-            roll_result=roll_result,
-            user="tester"
-        )
+        result_string = writer.write_output(roll_result=roll_result, user="tester")
         expected_result_string = "tester Roll: [3, 4] = 7 Result: 7"
         self.assertEqual(expected_result_string, result_string)
 
@@ -77,9 +68,7 @@ class TestBaseOutputWriter(TestCase):
         roll_result.append_roll(3)
         roll_result.append_roll(4)
 
-        result_string = writer.build_total_string(
-            roll_result=roll_result
-        )
+        result_string = writer.build_total_string(roll_result=roll_result)
         expected_result_string = "[3, 4] = 7"
         self.assertEqual(expected_result_string, result_string)
 
@@ -91,8 +80,6 @@ class TestBaseOutputWriter(TestCase):
         roll_result.append_roll(4)
         roll_result.apply_modifier(7)
 
-        result_string = writer.build_total_string(
-            roll_result=roll_result
-        )
+        result_string = writer.build_total_string(roll_result=roll_result)
         expected_result_string = "[5, 4] = 9 + 7"
         self.assertEqual(expected_result_string, result_string)

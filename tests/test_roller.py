@@ -7,7 +7,6 @@ from roll_witch.dice_bot.result import RollResult
 
 
 class TestStandardRoller(TestCase):
-
     @patch("random.randint")
     def test_roll_dice_set_single_die_no_modifier(self, mock_random):
         spec = RollSpec(dice_count=1, dice_sides=13)
@@ -15,16 +14,16 @@ class TestStandardRoller(TestCase):
         roller = StandardRoller()
         result = RollResult(spec=spec)
         roller.roll_dice_set(spec, result)
-        self.assertEqual(result.total,3)
+        self.assertEqual(result.total, 3)
 
     @patch("random.randint")
     def test_roll_dice_set_multiple_die_no_modifier(self, mock_random):
         spec = RollSpec(dice_count=4, dice_sides=13)
-        mock_random.side_effect = [1,2,3,5]
+        mock_random.side_effect = [1, 2, 3, 5]
         roller = StandardRoller()
         result = RollResult(spec=spec)
         roller.roll_dice_set(spec, result)
-        self.assertEqual(result.total, 1+2+3+5)
+        self.assertEqual(result.total, 1 + 2 + 3 + 5)
 
     @patch("random.randint")
     def test_roll_dice_set_single_die_positive_modifier(self, mock_random):
@@ -34,12 +33,12 @@ class TestStandardRoller(TestCase):
         roller = StandardRoller()
 
         result = roller.roll(spec)
-        self.assertEqual( 1 + 7, result.total)
+        self.assertEqual(1 + 7, result.total)
 
     @patch("random.randint")
     def test_roll_dice_set_multiple_die_positive_modifier(self, mock_random):
         spec = RollSpec(dice_count=3, dice_sides=13, modifier=7)
-        mock_random.side_effect = [1,2,3]
+        mock_random.side_effect = [1, 2, 3]
 
         roller = StandardRoller()
         result = roller.roll(spec)

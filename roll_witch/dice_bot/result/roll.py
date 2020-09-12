@@ -1,5 +1,5 @@
 from roll_witch.dice_bot.spec import Targetable, RollSpec
-from typing import Protocol, Type
+from typing import Protocol
 
 
 class Result(Protocol):

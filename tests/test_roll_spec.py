@@ -8,7 +8,7 @@ class TestRollSpec(TestCase):
         self.assertEqual(True, spec.has_target())
 
     def test_has_target_no_target(self):
-        spec = RollSpec( dice_sides=1, dice_count=1)
+        spec = RollSpec(dice_sides=1, dice_count=1)
         self.assertEqual(False, spec.has_target())
 
     def test_has_modifier(self):

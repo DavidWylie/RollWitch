@@ -27,8 +27,8 @@ class TokenRollOperation:
     def execute_part(self, roll_spec: RollSpec) -> RollResult:
         try:
             return self.roller.roll(roll_spec)
-        except ValueError as e:
-            raise Exception(f"Your answer is just too big to give you")
+        except ValueError:
+            raise Exception("Your answer is just too big to give you")
         except Exception as e:
             raise Exception(f"{e}")
 
