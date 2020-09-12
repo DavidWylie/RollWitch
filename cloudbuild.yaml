@@ -1,18 +1,19 @@
 steps:
-  - name: 'node'
-    entrypoint: npm
-    args: ['install']
-
-  - name: 'node'
-    entrypoint: npm
-    args: ['run','create-env']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c',
+      - |-
+        echo "DISCORD_TOKEN=${DISCORD_TOKEN}" > .env
+        cat .env
+    timeout: '60s'
     env:
     - 'DISCORD_TOKEN=${_DISCORD_TOKEN}'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: ['app', 'deploy']
-    timeout: '1600s'
+    timeout: '600s'
 
 substitutions:
   _DISCORD_TOKEN: 'test'
