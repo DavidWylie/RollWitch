@@ -52,6 +52,7 @@ class TokenInputParser:
             else:
                 modifier = int(match.group(2))
                 return RollSpec(modifier=modifier, operation="+")
+
         return match
 
     @staticmethod
@@ -70,15 +71,16 @@ class TokenInputParser:
         return spec
 
     def sanitise_operators(self, roll_string) -> str:
-        sanitized_string = self._sanitize_operator('+', roll_string)
-        sanitized_string = self._sanitize_operator('-', sanitized_string)
+        sanitized_string = self._sanitize_operator("+", roll_string)
+        sanitized_string = self._sanitize_operator("-", sanitized_string)
         return sanitized_string
 
     def _sanitize_operator(self, operator, string):
-        return string\
-            .replace(f" {operator} ", operator)\
-            .replace(operator, f" {operator}")\
+        return (
+            string.replace(f" {operator} ", operator)
+            .replace(operator, f" {operator}")
             .replace(f"t {operator}", f"t{operator}")
+        )
 
     def parse_part(self, part_string):
         for spec_name, regex in self.spec_regex.items():
@@ -86,7 +88,9 @@ class TokenInputParser:
             if match:
                 matcher = self.matchers.get(spec_name)
                 return matcher(match)
-        raise Exception(f"Roll What?  {part_string} is not valid Try again  e.g. roll 1d10 +10 or roll 1d6 t6")
+        raise Exception(
+            f"Roll What?  {part_string} is not valid Try again  e.g. roll 1d10 +10 or roll 1d6 t6"
+        )
 
 
 def get_token_parser() -> TokenInputParser:

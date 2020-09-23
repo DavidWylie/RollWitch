@@ -12,7 +12,7 @@ class OperationOutputWriter(OutputParser):
                 parts.append(f"{operator_string}{value_string}")
 
             target_string = self.get_target_string(result)
-            roll_string = ''.join(parts)
+            roll_string = "".join(parts)
             return f"{user} Roll: {roll_string} Result: {result.total}{target_string}"
         else:
             raise Exception("Invalid Output parser for given data")
@@ -33,10 +33,10 @@ class OperationOutputWriter(OutputParser):
         elif roll_result.roll_spec.has_modifier():
             return roll_result.roll_spec.dice_modifier
         else:
-            return ''
+            return ""
 
     def get_operator(self, index, roll_result):
         if index > 0 and roll_result.operator:
             return f" {roll_result.operator} "
         else:
-            return ''
+            return ""

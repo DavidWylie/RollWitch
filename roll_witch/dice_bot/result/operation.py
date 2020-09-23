@@ -14,10 +14,10 @@ class OperationResult:
         self.met_target = False
 
     def append_roll_result(self, result: RollResult):
-        if result.roll_spec.operator == '+':
+        if result.roll_spec.operator == "+":
             self.total += result.total
             self.roll_total += result.roll_total
-        elif result.roll_spec.operator == '-':
+        elif result.roll_spec.operator == "-":
             self.total -= result.total
             self.roll_total -= result.roll_total
         self.rolls.append(result)
