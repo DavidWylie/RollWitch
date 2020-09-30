@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from roll_witch.dice_bot.roller import StandardRoller, generator
+from roll_witch.dice_bot.roller import StandardRoller
 from roll_witch.dice_bot.roller.generator import RandomNumberGenerator
 from roll_witch.dice_bot.spec import RollSpec
 from roll_witch.dice_bot.result import RollResult
