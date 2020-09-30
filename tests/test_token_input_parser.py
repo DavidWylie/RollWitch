@@ -1,6 +1,6 @@
 from unittest import TestCase
 from hypothesis import given, strategies
-from roll_witch.dice_bot.input import TokenInputParser
+from roll_witch.dice_bot.input import get_token_parser
 
 
 class TestTokenInputParser(TestCase):
@@ -9,7 +9,7 @@ class TestTokenInputParser(TestCase):
         dice_sides=strategies.integers(min_value=1, max_value=100),
     )
     def test_parse_simple_dice(self, dice_count, dice_sides):
-        input_parser = TokenInputParser()
+        input_parser = get_token_parser()
         element = f"{dice_count}d{dice_sides}"
         spec = input_parser.parse(element)
         dice_spec = spec.parts[0]
@@ -33,7 +33,7 @@ class TestTokenInputParser(TestCase):
     def test_parse_simple_dice_with_positive_modifier(
         self, dice_count, dice_sides, modifier
     ):
-        input_parser = TokenInputParser()
+        input_parser = get_token_parser()
         element = f"{dice_count}d{dice_sides} +{modifier}"
         spec = input_parser.parse(element)
         dice_spec = spec.parts[0]
@@ -62,7 +62,7 @@ class TestTokenInputParser(TestCase):
     def test_parse_simple_dice_with_negative_modifier(
         self, dice_count, dice_sides, modifier
     ):
-        input_parser = TokenInputParser()
+        input_parser = get_token_parser()
         element = f"{dice_count}d{dice_sides} {modifier}"
         spec = input_parser.parse(element)
         dice_spec = spec.parts[0]
@@ -92,7 +92,7 @@ class TestTokenInputParser(TestCase):
         target=strategies.integers(min_value=-100, max_value=0),
     )
     def test_parse_lower_target_dice(self, dice_count, dice_sides, target):
-        input_parser = TokenInputParser()
+        input_parser = get_token_parser()
         element = f"{dice_count}d{dice_sides} t{target}"
         spec = input_parser.parse(element)
         dice_spec = spec.parts[0]
@@ -116,7 +116,7 @@ class TestTokenInputParser(TestCase):
         target=strategies.integers(min_value=1, max_value=100),
     )
     def test_parse_above_target_dice(self, dice_count, dice_sides, target):
-        input_parser = TokenInputParser()
+        input_parser = get_token_parser()
         element = f"{dice_count}d{dice_sides} t{target}"
         spec = input_parser.parse(element)
         dice_spec = spec.parts[0]
@@ -139,7 +139,7 @@ class TestTokenInputParser(TestCase):
         dice_sides=strategies.integers(min_value=1, max_value=100),
     )
     def test_parse_multiple_simple_dice(self, dice_count, dice_sides):
-        input_parser = TokenInputParser()
+        input_parser = get_token_parser()
         element = f"{dice_count}d{dice_sides} + {dice_count}d{dice_sides} + {dice_count}d{dice_sides}"
         spec = input_parser.parse(element)
         self.assertEqual(3, len(spec.parts))
@@ -160,7 +160,7 @@ class TestTokenInputParser(TestCase):
         dice_sides=strategies.integers(min_value=1, max_value=100),
     )
     def test_parse_multiple_simple_dice_leading_space(self, dice_count, dice_sides):
-        input_parser = TokenInputParser()
+        input_parser = get_token_parser()
         element = f"{dice_count}d{dice_sides} +{dice_count}d{dice_sides} +{dice_count}d{dice_sides}"
         spec = input_parser.parse(element)
         self.assertEqual(3, len(spec.parts))
@@ -181,7 +181,7 @@ class TestTokenInputParser(TestCase):
         dice_sides=strategies.integers(min_value=1, max_value=100),
     )
     def test_parse_multiple_simple_dice_no_leading_space(self, dice_count, dice_sides):
-        input_parser = TokenInputParser()
+        input_parser = get_token_parser()
         element = f"{dice_count}d{dice_sides}+{dice_count}d{dice_sides}+{dice_count}d{dice_sides}"
         spec = input_parser.parse(element)
         self.assertEqual(3, len(spec.parts))
