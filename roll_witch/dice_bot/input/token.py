@@ -1,3 +1,4 @@
+from roll_witch.dice_bot.input.spec import DiceSpec, ModifierSpec, TargetSpec, InputPartSpec
 from roll_witch.dice_bot.spec import RollSpec, OperationSpec
 from typing import Match
 import re
@@ -8,59 +9,10 @@ _instance = None
 class TokenInputParser:
     def __init__(self) -> None:
         super().__init__()
-        self.spec_regex = {
-            "dice_spec": re.compile(r"([+\-])*(\d*)d(\d+)"),
-            "modifier_spec": re.compile(r"([+\-])*([0-9]+)"),
-            "target_spec": re.compile(r"t([\-]*[0-9]+)"),
-        }
-        self.matchers = {
-            "dice_spec": self.create_dice_matcher(),
-            "modifier_spec": self.create_modifier_matcher(),
-            "target_spec": self.create_target_matcher(),
-        }
+        self.part_specs = {}
 
-    @staticmethod
-    def create_dice_matcher():
-        def match(match: Match):
-            if match.group(1):
-                operation = match.group(1)
-            else:
-                operation = "+"
-
-            if match.group(2):
-                dice_count = int(match.group(2))
-            else:
-                dice_count = 1
-
-            return RollSpec(
-                dice_count=int(dice_count),
-                dice_sides=int(match.group(3)),
-                operation=operation,
-            )
-
-        return match
-
-    @staticmethod
-    def create_modifier_matcher():
-        def match(match: Match):
-            if match.group(1) == "+":
-                modifier = int(match.group(2))
-                return RollSpec(modifier=modifier, operation="+")
-            elif match.group(1) == "-":
-                modifier = int(match.group(2))
-                return RollSpec(modifier=modifier, operation="-")
-            else:
-                modifier = int(match.group(2))
-                return RollSpec(modifier=modifier, operation="+")
-
-        return match
-
-    @staticmethod
-    def create_target_matcher():
-        def match(match: Match):
-            return RollSpec(target_number=int(match.group(1)), operation=None)
-
-        return match
+    def add_spec(self, spec: InputPartSpec):
+        self.part_specs[spec.name] = spec
 
     def parse(self, roll_string: str):
         parts = self.sanitise_operators(roll_string).split()
@@ -83,11 +35,10 @@ class TokenInputParser:
         )
 
     def parse_part(self, part_string):
-        for spec_name, regex in self.spec_regex.items():
-            match = regex.fullmatch(part_string)
+        for spec_name, spec in self.part_specs.items():
+            match = spec.matches_pattern(part_string)
             if match:
-                matcher = self.matchers.get(spec_name)
-                return matcher(match)
+                return spec.apply(match)
         raise Exception(
             f"Roll What?  {part_string} is not valid Try again  e.g. roll 1d10 +10 or roll 1d6 t6"
         )
@@ -98,5 +49,9 @@ def get_token_parser() -> TokenInputParser:
 
     if _instance is None:
         _instance = TokenInputParser()
+
+        _instance.add_spec(DiceSpec())
+        _instance.add_spec(ModifierSpec())
+        _instance.add_spec(TargetSpec())
 
     return _instance
