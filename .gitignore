@@ -6,5 +6,5 @@ package-lock.json
 venv
 *.pyc
 tests/.hypothesis/
-/.coverage
+.coverage
 .hypothesis/
