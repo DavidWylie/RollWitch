@@ -7,7 +7,5 @@ __all__ = [
     "RegexInputParser",
     "TokenInputParser",
     "get_regex_parser",
-    "get_token_parser"
+    "get_token_parser",
 ]
-
-

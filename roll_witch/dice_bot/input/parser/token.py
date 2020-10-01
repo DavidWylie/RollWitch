@@ -3,7 +3,6 @@ from roll_witch.dice_bot.spec import OperationSpec
 
 
 class TokenInputParser(InputParser):
-
     def parse(self, roll_string: str):
         parts = self.sanitise_operators(roll_string).split()
         spec = OperationSpec()

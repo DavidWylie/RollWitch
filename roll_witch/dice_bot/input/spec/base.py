@@ -3,7 +3,7 @@ from typing import Pattern, Match
 from roll_witch.dice_bot.spec import RollSpec
 
 
-class InputPartSpec():
+class InputPartSpec:
     regex: Pattern
     name: str
 

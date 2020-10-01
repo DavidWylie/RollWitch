@@ -32,7 +32,7 @@ class DiceSpec(InputPartSpec):
 class DiceWithModifierSpec(InputPartSpec):
     def __init__(self) -> None:
         super().__init__()
-        self.regex =re.compile(r"(\d*)d(\d+)\s*([+\-])*([0-9]*)")
+        self.regex = re.compile(r"(\d*)d(\d+)\s*([+\-])*([0-9]*)")
         self.name = "modifier_and_dice_spec"
 
     def apply(self, match: Match):

@@ -1,7 +1,7 @@
 from roll_witch.dice_bot.input.spec import InputPartSpec
 
 
-class InputParser():
+class InputParser:
     def __init__(self) -> None:
         super().__init__()
         self.part_specs = {}
@@ -10,6 +10,4 @@ class InputParser():
         self.part_specs[spec.name] = spec
 
     def parse(self, roll_string: str):
-        raise Exception(
-            f"Unknown Parser"
-        )
+        raise Exception(f"Unknown Parser")

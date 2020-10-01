@@ -24,4 +24,3 @@ class BasicOutputWriter(TargetedOutputWriter):
             return "Fumble"
 
         return "Failed"
-
