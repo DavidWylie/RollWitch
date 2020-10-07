@@ -1,10 +1,6 @@
-import random
 from roll_witch.dice_bot.result import RollResult
 from roll_witch.dice_bot.spec import RollSpec, DiceSet, DiceModifier
-from os import urandom
-
-
-random.seed(urandom(15))
+from . import generator
 
 
 class StandardRoller:
@@ -26,4 +22,4 @@ class StandardRoller:
                 roll_result.append_roll(self.roll_dice(spec))
 
     def roll_dice(self, spec: DiceSet):
-        return random.randint(1, spec.dice_sides)
+        return generator.get_instance().get_int(spec.dice_sides)
