@@ -1,16 +1,17 @@
 from roll_witch.dice_bot.input.parser.base import InputParser
 from roll_witch.dice_bot.input.parser.regex import RegexInputParser
 from roll_witch.dice_bot.input.spec import TargetWithDiceSpec, DiceWithModifierSpec
+from roll_witch.dice_bot.input.spec.basic import BasicRpgSpec
 
 _instance = None
 
 
-def get_regex_parser() -> InputParser:
+def get_basic_rpg_parser() -> InputParser:
     global _instance
 
     if _instance is None:
         _instance = RegexInputParser()
         _instance.add_spec(BasicRpgSpec())
-        _instance.add_spec(BasicUserRpgSpec())
+       # _instance.add_spec(BasicUserRpgSpec())
 
     return _instance
