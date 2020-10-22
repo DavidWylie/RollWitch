@@ -40,18 +40,16 @@ class EventListenerClient(discord.Client):
     @staticmethod
     def get_bot_operation(message):
         bot_operation = None
-        if message.content.startswith("!roll"):
-            bot_operation = operation.get_roll_operation(
-                message.content[6:], message.author.display_name
-            )
-        elif message.content.startswith("!r-t"):
-            bot_operation = operation.get_token_roll_operation(
-                message.content[5:], message.author.display_name
-            )
-        elif message.content.startswith("!r"):
-            bot_operation = operation.get_token_roll_operation(
-                message.content[3:], message.author.display_name
-            )
+        operations = {
+            "!r-t": operation.get_token_roll_operation,
+            "!r-r": operation.get_roll_operation,
+            "!roll": operation.get_token_roll_operation,
+            "!r": operation.get_token_roll_operation,
+        }
+        for prefix, operation_getter in operations.items():
+            if message.content.startswith(prefix):
+                operation_input = message.content[len(prefix):]
+                return operation_getter(operation_input, message.author.display_name)
 
         return bot_operation
 
