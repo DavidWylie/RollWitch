@@ -2,7 +2,6 @@ runtime: python38
 entrypoint: python -m roll_witch.main
 manual_scaling:
   instances: 1
-service: roll-witch
 resources:
   cpu: 0.5
   memory_gb: 512
