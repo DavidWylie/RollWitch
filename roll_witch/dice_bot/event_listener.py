@@ -40,7 +40,7 @@ class EventListenerClient(discord.Client):
         for prefix, op_getter in self.operations.items():
             if message.content.startswith(prefix):
                 operation_input = message.content[len(prefix):]
-                return op_getter(operation_input, message.author.display_name)
+                return op_getter(roll_string=operation_input, roll_user=message.author.display_name)
         return None
 
 
@@ -59,8 +59,8 @@ def get_operations():
 
 
 def with_type(type, func):
-    def op(*args, **kwargs):
+    def op(**kwargs):
         kwargs["roll_type"] = type
-        return func(*args, *kwargs)
+        return func(*kwargs)
 
     return op
