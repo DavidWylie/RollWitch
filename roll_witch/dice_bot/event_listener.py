@@ -61,6 +61,6 @@ def get_operations():
 def with_type(type, func):
     def op(**kwargs):
         kwargs["roll_type"] = type
-        return func(*kwargs)
+        return func(**kwargs)
 
     return op
