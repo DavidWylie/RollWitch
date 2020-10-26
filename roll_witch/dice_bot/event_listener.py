@@ -39,7 +39,7 @@ class EventListenerClient(discord.Client):
     def get_bot_operation(self, message):
         for prefix, op_getter in self.operations.items():
             if message.content.startswith(prefix):
-                operation_input = message.content[len(prefix):]
+                operation_input = message.content[len(prefix):].lstrip()
                 return op_getter(roll_string=operation_input, user=message.author.display_name)
         return None
 
