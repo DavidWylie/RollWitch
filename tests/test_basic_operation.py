@@ -10,7 +10,7 @@ class TestStandardOperation(TestCase):
         operation = get_roll_operation('basic_rpg', "t33 easy", "Another TestUser")
         response = operation.execute()
         expected_response = "Another TestUser " \
-                            "Roll: [10] = 10  " \
+                            "Roll: [10] = 10 " \
                             "Total: 10 " \
                             "Target: 66 " \
                             "Result: Special"
@@ -22,7 +22,7 @@ class TestStandardOperation(TestCase):
         operation = get_roll_operation('basic_rpg', "t40 hard", "Another TestUser")
         response = operation.execute()
         expected_response = "Another TestUser " \
-                            "Roll: [10] = 10  " \
+                            "Roll: [10] = 10 " \
                             "Total: 10 " \
                             "Target: 20 " \
                             "Result: Success"
