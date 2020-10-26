@@ -9,7 +9,11 @@ class TestStandardOperation(TestCase):
         mock_roll.side_effect = [10]
         operation = get_roll_operation('basic_rpg', "t33 easy", "Another TestUser")
         response = operation.execute()
-        expected_response = "Another TestUser Roll: [10] = 10  Total: 10 Target: 66 Result: Special"
+        expected_response = "Another TestUser " \
+                            "Roll: [10] = 10  " \
+                            "Total: 10 " \
+                            "Target: 66 " \
+                            "Result: Special"
         self.assertEqual(expected_response, response)
 
     @patch("random.randint")
@@ -17,5 +21,9 @@ class TestStandardOperation(TestCase):
         mock_roll.side_effect = [10]
         operation = get_roll_operation('basic_rpg', "t40 hard", "Another TestUser")
         response = operation.execute()
-        expected_response = "Another TestUser Roll: [10] = 10  Total: 10 Target: 20 Result: Success"
+        expected_response = "Another TestUser " \
+                            "Roll: [10] = 10  " \
+                            "Total: 10 " \
+                            "Target: 20 " \
+                            "Result: Success"
         self.assertEqual(expected_response, response)
