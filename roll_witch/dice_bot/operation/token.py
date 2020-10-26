@@ -33,7 +33,7 @@ class TokenRollOperation:
             raise Exception(f"{e}")
 
 
-def get_token_roll_operation(roll_string, user):
+def get_token_roll_operation(roll_type, roll_string, user):
     roll_spec = get_token_parser().parse(roll_string)
     if roll_spec.dice_count > 10000:
         raise Exception("How many?  You must be joking.")

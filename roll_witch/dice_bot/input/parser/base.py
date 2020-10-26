@@ -10,4 +10,4 @@ class InputParser:
         self.part_specs[spec.name] = spec
 
     def parse(self, roll_string: str):
-        raise Exception(f"Unknown Parser")
+        raise Exception("Unknown Parser")

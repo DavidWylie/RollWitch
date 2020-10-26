@@ -8,4 +8,4 @@ class TargetedOutputWriter(BaseOutputWriter):
 
     def build_result_string(self, roll_result: Result, total_string, user):
         success_string = self.build_success_string(roll_result)
-        return f"{user} Roll: {total_string} = {roll_result.total} Result: {success_string}"
+        return f"{user} Roll: {total_string}  Total: {roll_result.total} Target: {abs(roll_result.spec.target_number)} Result: {success_string}"

@@ -13,13 +13,13 @@ class BasicRpgSpec(InputPartSpec):
         self.name = "basic_spec"
 
     def apply(self, match: Match):
-        target_number = -int(match.group(0))
+        target_number = -int(match.group(1))
 
-        if match.group(1):
-            modifier = match.group(1)
-            if modifier == 'hard':
+        if match.group(2):
+            modifier = match.group(2)
+            if modifier == "hard":
                 target_number = ceil(target_number / 2)
-            elif modifier == 'easy':
+            elif modifier == "easy":
                 target_number = target_number * 2
 
         return RollSpec(
