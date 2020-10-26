@@ -12,6 +12,5 @@ def get_basic_rpg_parser() -> InputParser:
     if _instance is None:
         _instance = RegexInputParser()
         _instance.add_spec(BasicRpgSpec())
-       # _instance.add_spec(BasicUserRpgSpec())
 
     return _instance
