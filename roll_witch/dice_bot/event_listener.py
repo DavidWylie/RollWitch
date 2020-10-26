@@ -40,7 +40,7 @@ class EventListenerClient(discord.Client):
         for prefix, op_getter in self.operations.items():
             if message.content.startswith(prefix):
                 operation_input = message.content[len(prefix):]
-                return op_getter(roll_string=operation_input, roll_user=message.author.display_name)
+                return op_getter(roll_string=operation_input, user=message.author.display_name)
         return None
 
 
