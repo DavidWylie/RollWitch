@@ -1,6 +1,6 @@
 from unittest import TestCase
 from hypothesis import given, strategies
-from roll_witch.dice_bot.input import RegexInputParser
+from roll_witch.dice_bot.input import get_regex_parser
 
 
 class TestRegexInputParser(TestCase):
@@ -9,7 +9,7 @@ class TestRegexInputParser(TestCase):
         dice_sides=strategies.integers(min_value=1, max_value=100),
     )
     def test_parse_simple_dice(self, dice_count, dice_sides):
-        input_parser = RegexInputParser()
+        input_parser = get_regex_parser()
         element = f"{dice_count}d{dice_sides}"
         spec = input_parser.parse(element)
         self.assertEqual(
@@ -35,7 +35,7 @@ class TestRegexInputParser(TestCase):
     def test_parse_simple_dice_with_positive_modifier(
         self, dice_count, dice_sides, modifier
     ):
-        input_parser = RegexInputParser()
+        input_parser = get_regex_parser()
         element = f"{dice_count}d{dice_sides} +{modifier}"
         spec = input_parser.parse(element)
         self.assertEqual(
@@ -61,7 +61,7 @@ class TestRegexInputParser(TestCase):
     def test_parse_simple_dice_with_negative_modifier(
         self, dice_count, dice_sides, modifier
     ):
-        input_parser = RegexInputParser()
+        input_parser = get_regex_parser()
         element = f"{dice_count}d{dice_sides} {modifier}"
         spec = input_parser.parse(element)
         self.assertEqual(
@@ -85,7 +85,7 @@ class TestRegexInputParser(TestCase):
         target=strategies.integers(min_value=1, max_value=100),
     )
     def test_parse_lower_target_dice(self, dice_count, dice_sides, target):
-        input_parser = RegexInputParser()
+        input_parser = get_regex_parser()
         element = f"{dice_count}d{dice_sides} t-{target}"
         spec = input_parser.parse(element)
         print(element)
@@ -112,7 +112,7 @@ class TestRegexInputParser(TestCase):
     def test_parse_lower_target_dice_negative_value(
         self, dice_count, dice_sides, target
     ):
-        input_parser = RegexInputParser()
+        input_parser = get_regex_parser()
         element = f"{dice_count}d{dice_sides} t{target}"
         spec = input_parser.parse(element)
         print(element)
@@ -137,7 +137,7 @@ class TestRegexInputParser(TestCase):
         target=strategies.integers(min_value=1, max_value=100),
     )
     def test_parse_above_target_dice(self, dice_count, dice_sides, target):
-        input_parser = RegexInputParser()
+        input_parser = get_regex_parser()
         element = f"{dice_count}d{dice_sides} t{target}"
         spec = input_parser.parse(element)
         print(element)

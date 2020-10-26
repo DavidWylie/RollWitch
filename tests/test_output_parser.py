@@ -31,7 +31,7 @@ class TestTargetedOutputWriter(TestCase):
         result_string = writer.build_result_string(
             roll_result=roll_result, total_string="totalString", user="tester"
         )
-        expected_result_string = "tester Roll: totalString = 7 Result: Success"
+        expected_result_string = "tester Roll: totalString Total: 7 Target: 5 Result: Success"
         self.assertEqual(expected_result_string, result_string)
 
     def test_build_result_string_missed_target(self):
@@ -45,7 +45,7 @@ class TestTargetedOutputWriter(TestCase):
         result_string = writer.build_result_string(
             roll_result=roll_result, total_string="totalString", user="tester"
         )
-        expected_result_string = "tester Roll: totalString = 7 Result: Failed"
+        expected_result_string = "tester Roll: totalString Total: 7 Target: 5 Result: Failed"
         self.assertEqual(expected_result_string, result_string)
 
 
