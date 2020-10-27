@@ -8,7 +8,7 @@ from roll_witch.dice_bot.spec import RollSpec
 class DiceSpec(InputPartSpec):
     def __init__(self) -> None:
         super().__init__()
-        self.regex = re.compile(r"([+\-])*(\d*)d(\d+)")
+        self.regex = re.compile(r"([+\-*])*(\d*)d(\d+)")
         self.name = "dice_spec"
 
     def apply(self, match: Match):
