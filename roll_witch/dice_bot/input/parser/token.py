@@ -15,6 +15,7 @@ class TokenInputParser(InputParser):
         sanitized_string = self._sanitize_operator("+", roll_string)
         sanitized_string = self._sanitize_operator("-", sanitized_string)
         sanitized_string = self._sanitize_operator("*", sanitized_string)
+        sanitized_string = self._sanitize_operator("/", sanitized_string)
         return sanitized_string
 
     def _sanitize_operator(self, operator, string):
