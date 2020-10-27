@@ -23,6 +23,11 @@ class OperationResult:
         elif result.roll_spec.operator == "*":
             self.total *= result.total
             self.roll_total *= result.roll_total
+        elif result.roll_spec.operator == "/":
+            if result.total:
+                self.total = round(self.total / result.total)
+            if result.roll_total:
+                self.roll_total = round(self.roll_total / result.roll_total)
         self.rolls.append(result)
 
     def had_target(self) -> bool:
