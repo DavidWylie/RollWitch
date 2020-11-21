@@ -9,7 +9,7 @@ from roll_witch.dice_bot.spec import RollSpec
 class BasicRpgSpec(InputPartSpec):
     def __init__(self) -> None:
         super().__init__()
-        self.regex = re.compile(r"t(\d*)\s*(easy|hard)*")
+        self.regex = re.compile(r"t(\d*)\s*(easy|hard)*", re.IGNORECASE)
         self.name = "basic_spec"
 
     def apply(self, match: Match):
