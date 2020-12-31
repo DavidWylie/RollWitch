@@ -1,0 +1,19 @@
+<html>
+<p>Welcome to Roll Witch</p>
+{% if output %}
+<p>
+Roll Result: {{ output }}
+</p>
+{% endif %}
+
+<form action="/roll" method="post" accept-charset="utf-8"
+      enctype="application/x-www-form-urlencoded">
+
+    <label for="author">name</label>
+    <input id="author" name="author" type="text" value="" autofocus/>
+    <label for="roll_operation">What would you like me to roll?</label>
+    <input id="roll_operation" name="roll_operation" type="text" value=""/>
+
+    <input type="submit" value="Roll"/>
+</form>
+</html>
