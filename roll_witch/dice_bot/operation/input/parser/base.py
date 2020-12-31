@@ -1,4 +1,4 @@
-from roll_witch.dice_bot.operation.input.spec import InputPartSpec
+from ..spec import InputPartSpec
 
 
 class InputParser:

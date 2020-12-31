@@ -1,5 +1,5 @@
-from roll_witch.dice_bot.operation.input.parser.base import InputParser
-from roll_witch.dice_bot.operation.spec import OperationSpec
+from .base import InputParser
+from ...spec import OperationSpec
 
 
 class TokenInputParser(InputParser):
