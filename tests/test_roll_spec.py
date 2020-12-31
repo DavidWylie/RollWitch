@@ -1,5 +1,5 @@
 from unittest import TestCase
-from roll_witch.dice_bot.spec import RollSpec
+from roll_witch.dice_bot.operation.spec import RollSpec
 
 
 class TestRollSpec(TestCase):

@@ -1,6 +1,7 @@
 from .standard import StandardRoller
-from roll_witch.dice_bot.result import RollResult
-from roll_witch.dice_bot.spec import Targetable, RollSpec
+from .result import RollResult
+from .spec import RollSpec
+from roll_witch.dice_bot.protocols import Targetable
 
 
 class TargetedRoller(StandardRoller):

@@ -1,6 +1,7 @@
-from roll_witch.dice_bot.result import RollResult
-from roll_witch.dice_bot.spec import RollSpec, DiceSet, DiceModifier
+from roll_witch.dice_bot.protocols import DiceModifier, DiceSet
 from . import generator
+from .result import RollResult
+from .spec import RollSpec
 
 
 class StandardRoller:

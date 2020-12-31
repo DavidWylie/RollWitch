@@ -1,6 +1,6 @@
 from unittest import TestCase
 from hypothesis import given, strategies
-from roll_witch.dice_bot.input import get_token_parser
+from roll_witch.dice_bot.operation.input import get_token_parser
 
 
 class TestTokenInputParser(TestCase):
