@@ -5,4 +5,4 @@ from .targetable import Targetable
 from .operation import Operation
 from .operation_factory import OperationFactory
 
-__all__ = ["DiceSet", "DiceModifier", "Result", "Targetable"]
+__all__ = ["DiceSet", "DiceModifier", "Result", "Targetable", "Operation", "OperationFactory"]
