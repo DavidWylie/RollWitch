@@ -1,6 +1,11 @@
 from ..output import OperationOutputWriter
 from ..spec import OperationSpec
-from roll_witch.rolling.roller import RollSpec, RollResult, StandardRoller, TargetedRoller
+from roll_witch.rolling.roller import (
+    RollSpec,
+    RollResult,
+    StandardRoller,
+    TargetedRoller,
+)
 from ..result import OperationResult
 from roll_witch.rolling.protocols import Operation
 

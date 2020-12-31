@@ -27,7 +27,5 @@ class OperationParser:
         for prefix, op_getter in self.operations.items():
             if message_content.startswith(prefix):
                 operation_input = message_content[len(prefix) :].lstrip()
-                return op_getter(
-                    roll_string=operation_input, user=message_author
-                )
+                return op_getter(roll_string=operation_input, user=message_author)
         return None

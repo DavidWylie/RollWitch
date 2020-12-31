@@ -21,7 +21,7 @@ class EventListenerClient(discord.Client):
         try:
             bot_operation = self.operation_parser.parse_operation(
                 message_content=message.content,
-                message_author=message.author.display_name
+                message_author=message.author.display_name,
             )
             if bot_operation:
                 response = bot_operation.execute()
