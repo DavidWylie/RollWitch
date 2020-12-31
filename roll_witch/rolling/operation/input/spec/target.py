@@ -1,8 +1,8 @@
 import re
 from typing import Match
 
-from roll_witch.dice_bot.operation.input.spec import InputPartSpec
-from roll_witch.dice_bot.roller import RollSpec
+from .base import InputPartSpec
+from roll_witch.rolling.roller import RollSpec
 
 
 class TargetSpec(InputPartSpec):

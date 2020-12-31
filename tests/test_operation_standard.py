@@ -1,4 +1,4 @@
-from roll_witch.dice_bot.operation.factory import standard_factory
+from roll_witch.rolling.operation.factory import standard_factory
 from unittest import TestCase
 from unittest.mock import patch
 

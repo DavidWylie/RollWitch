@@ -1,5 +1,5 @@
-from roll_witch.dice_bot.roller import RollSpec
-from roll_witch.dice_bot.protocols import Operation
+from roll_witch.rolling.roller import RollSpec
+from roll_witch.rolling.protocols import Operation
 
 
 class RollOperation(Operation):

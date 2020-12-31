@@ -1,9 +1,9 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from roll_witch.dice_bot.roller import StandardRoller, RollResult
-from roll_witch.dice_bot.roller.generator import RandomNumberGenerator
-from roll_witch.dice_bot.operation.spec import RollSpec
+from roll_witch.rolling.roller import StandardRoller, RollResult
+from roll_witch.rolling.roller.generator import RandomNumberGenerator
+from roll_witch.rolling.operation.spec import RollSpec
 
 
 class TestGenerator(RandomNumberGenerator):
@@ -16,7 +16,7 @@ class TestGenerator(RandomNumberGenerator):
 
 
 class TestStandardRoller(TestCase):
-    @patch("roll_witch.dice_bot.roller.generator.get_instance")
+    @patch("roll_witch.rolling.roller.generator.get_instance")
     def test_roll_dice_set_single_die_no_modifier(self, mock_generator):
         spec = RollSpec(dice_count=1, dice_sides=13)
         mock_generator.return_value = TestGenerator([3])
@@ -25,7 +25,7 @@ class TestStandardRoller(TestCase):
         roller.roll_dice_set(spec, result)
         self.assertEqual(result.total, 3)
 
-    @patch("roll_witch.dice_bot.roller.generator.get_instance")
+    @patch("roll_witch.rolling.roller.generator.get_instance")
     def test_roll_dice_set_multiple_die_no_modifier(self, mock_generator):
         spec = RollSpec(dice_count=4, dice_sides=13)
         mock_generator.return_value = TestGenerator([1, 2, 3, 5])
@@ -34,7 +34,7 @@ class TestStandardRoller(TestCase):
         roller.roll_dice_set(spec, result)
         self.assertEqual(result.total, 1 + 2 + 3 + 5)
 
-    @patch("roll_witch.dice_bot.roller.generator.get_instance")
+    @patch("roll_witch.rolling.roller.generator.get_instance")
     def test_roll_dice_set_single_die_positive_modifier(self, mock_generator):
         spec = RollSpec(dice_count=1, dice_sides=13, modifier=7)
         mock_generator.return_value = TestGenerator([1])
@@ -44,7 +44,7 @@ class TestStandardRoller(TestCase):
         result = roller.roll(spec)
         self.assertEqual(1 + 7, result.total)
 
-    @patch("roll_witch.dice_bot.roller.generator.get_instance")
+    @patch("roll_witch.rolling.roller.generator.get_instance")
     def test_roll_dice_set_multiple_die_positive_modifier(self, mock_generator):
         spec = RollSpec(dice_count=3, dice_sides=13, modifier=7)
         mock_generator.return_value = TestGenerator([1, 2, 3])
@@ -53,7 +53,7 @@ class TestStandardRoller(TestCase):
         result = roller.roll(spec)
         self.assertEqual(result.total, 6 + 7)
 
-    @patch("roll_witch.dice_bot.roller.generator.get_instance")
+    @patch("roll_witch.rolling.roller.generator.get_instance")
     def test_roll_dice_set_multiple_die_negative_modifier(self, mock_generator):
         spec = RollSpec(dice_count=3, dice_sides=13, modifier=-7)
         mock_generator.return_value = TestGenerator([1, 2, 3])
@@ -63,7 +63,7 @@ class TestStandardRoller(TestCase):
         result = roller.roll(spec)
         self.assertEqual(6 - 7, result.total)
 
-    @patch("roll_witch.dice_bot.roller.generator.get_instance")
+    @patch("roll_witch.rolling.roller.generator.get_instance")
     def test_roll_dice_happy(self, mock_generator):
         mock_generator.return_value = TestGenerator([3])
         spec = RollSpec(dice_count=1, dice_sides=13)

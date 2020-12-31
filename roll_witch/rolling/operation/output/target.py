@@ -1,4 +1,4 @@
-from roll_witch.dice_bot.protocols import Result
+from roll_witch.rolling.protocols import Result
 from .base import BaseOutputWriter
 
 

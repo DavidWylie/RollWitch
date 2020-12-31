@@ -1,5 +1,5 @@
-from roll_witch.dice_bot.operation.spec import OperationSpec
-from roll_witch.dice_bot.roller import RollResult
+from roll_witch.rolling.operation.spec import OperationSpec
+from roll_witch.rolling.roller import RollResult
 
 
 class OperationResult:

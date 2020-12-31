@@ -1,4 +1,4 @@
-from roll_witch.dice_bot.protocols import Targetable
+from roll_witch.rolling.protocols import Targetable
 
 
 class RollSpec(Targetable):

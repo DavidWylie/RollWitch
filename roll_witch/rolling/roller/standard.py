@@ -1,4 +1,4 @@
-from roll_witch.dice_bot.protocols import DiceModifier, DiceSet
+from roll_witch.rolling.protocols import DiceModifier, DiceSet
 from . import generator
 from .result import RollResult
 from .spec import RollSpec

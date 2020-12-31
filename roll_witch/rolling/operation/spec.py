@@ -1,4 +1,4 @@
-from roll_witch.dice_bot.roller.spec import RollSpec
+from roll_witch.rolling.roller import RollSpec
 
 
 class OperationSpec:

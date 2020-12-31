@@ -23,11 +23,11 @@ class OperationParser:
             "!r": token_operation,
         }
 
-    def parse_operation(self, message):
+    def parse_operation(self, message_content, message_author):
         for prefix, op_getter in self.operations.items():
-            if message.content.startswith(prefix):
-                operation_input = message.content[len(prefix) :].lstrip()
+            if message_content.startswith(prefix):
+                operation_input = message_content[len(prefix) :].lstrip()
                 return op_getter(
-                    roll_string=operation_input, user=message.author.display_name
+                    roll_string=operation_input, user=message_author
                 )
         return None

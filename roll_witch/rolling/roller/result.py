@@ -1,5 +1,5 @@
 from .spec import RollSpec
-from roll_witch.dice_bot.protocols import Targetable, Result
+from roll_witch.rolling.protocols import Targetable, Result
 
 
 class RollResult(Result):

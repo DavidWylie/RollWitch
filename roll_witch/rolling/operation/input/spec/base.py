@@ -1,6 +1,6 @@
 from typing import Pattern, Match
 
-from roll_witch.dice_bot.roller import RollSpec
+from roll_witch.rolling.roller import RollSpec
 
 
 class InputPartSpec:

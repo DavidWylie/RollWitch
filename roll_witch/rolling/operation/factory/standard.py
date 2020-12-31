@@ -1,4 +1,4 @@
-from roll_witch.dice_bot.roller import StandardRoller, TargetedRoller
+from roll_witch.rolling.roller import StandardRoller, TargetedRoller
 from ..input import get_regex_parser, get_basic_rpg_parser
 from ..operations import standard
 from ..output import (
@@ -6,7 +6,7 @@ from ..output import (
     StandardOutputWriter,
     BasicOutputWriter,
 )
-from roll_witch.dice_bot.protocols import OperationFactory
+from roll_witch.rolling.protocols import OperationFactory
 
 
 class StandardOperationFactory(OperationFactory):

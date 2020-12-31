@@ -1,6 +1,6 @@
 from ..input import get_token_parser
 from ..operations.token import TokenRollOperation
-from roll_witch.dice_bot.protocols import OperationFactory
+from roll_witch.rolling.protocols import OperationFactory
 
 
 class TokenOperationFactory(OperationFactory):

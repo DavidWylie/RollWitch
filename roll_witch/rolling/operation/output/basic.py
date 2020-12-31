@@ -1,7 +1,7 @@
 from math import ceil, floor
 
-from roll_witch.dice_bot.operation.output import TargetedOutputWriter
-from roll_witch.dice_bot.protocols import Result
+from . import TargetedOutputWriter
+from roll_witch.rolling.protocols import Result
 
 
 class BasicOutputWriter(TargetedOutputWriter):

@@ -1,8 +1,8 @@
-from roll_witch.dice_bot.operation.output import OperationOutputWriter
-from roll_witch.dice_bot.operation.spec import OperationSpec, RollSpec
-from roll_witch.dice_bot.roller import RollResult, StandardRoller, TargetedRoller
-from roll_witch.dice_bot.operation.result import OperationResult
-from roll_witch.dice_bot.protocols import Operation
+from ..output import OperationOutputWriter
+from ..spec import OperationSpec
+from roll_witch.rolling.roller import RollSpec, RollResult, StandardRoller, TargetedRoller
+from ..result import OperationResult
+from roll_witch.rolling.protocols import Operation
 
 
 class TokenRollOperation(Operation):

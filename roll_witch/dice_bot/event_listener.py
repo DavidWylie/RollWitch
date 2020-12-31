@@ -1,5 +1,5 @@
 import discord
-from .operation import OperationParser
+from roll_witch.rolling.operation import OperationParser
 
 
 class EventListenerClient(discord.Client):
@@ -19,7 +19,10 @@ class EventListenerClient(discord.Client):
         if message.author == self.user:
             return
         try:
-            bot_operation = self.operation_parser.parse_operation(message)
+            bot_operation = self.operation_parser.parse_operation(
+                message_content=message.content,
+                message_author=message.author.display_name
+            )
             if bot_operation:
                 response = bot_operation.execute()
                 await message.channel.send(response)

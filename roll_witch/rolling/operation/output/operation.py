@@ -1,6 +1,6 @@
 from .base import OutputParser
-from roll_witch.dice_bot.roller import RollResult
-from roll_witch.dice_bot.protocols import Result
+from roll_witch.rolling.roller import RollResult
+from roll_witch.rolling.protocols import Result
 from ..result import OperationResult
 
 
