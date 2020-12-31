@@ -1,7 +1,8 @@
 from unittest import TestCase
-from roll_witch.dice_bot.output import OperationOutputWriter
-from roll_witch.dice_bot.spec import OperationSpec, RollSpec
-from roll_witch.dice_bot.result import RollResult, OperationResult
+from roll_witch.rolling.operation.output import OperationOutputWriter
+from roll_witch.rolling.operation.spec import OperationSpec, RollSpec
+from roll_witch.rolling.roller import RollResult
+from roll_witch.rolling.operation import OperationResult
 
 
 class TestTokenOutputWriter(TestCase):

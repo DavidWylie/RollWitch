@@ -1,6 +1,6 @@
 from unittest import TestCase
-from roll_witch.dice_bot.spec import RollSpec
-from roll_witch.dice_bot.result import RollResult
+from roll_witch.rolling.operation.spec import RollSpec
+from roll_witch.rolling.roller import RollResult
 
 
 class TestRollResult(TestCase):
