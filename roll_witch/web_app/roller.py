@@ -5,7 +5,7 @@ from aiohttp.web import Request
 
 
 @aiohttp_jinja2.template("roller.jinja2")
-def roll(request: Request):
+async def roll(request: Request):
     operation_parser = OperationParser()
     data = await request.post()
     author = data["author"]
