@@ -1,5 +1,5 @@
-from roll_witch.dice_bot.operation.input import TokenInputParser
-from roll_witch.dice_bot.operation.input.spec import DiceSpec, ModifierSpec, TargetSpec
+from .parser.token import TokenInputParser
+from .spec import DiceSpec, ModifierSpec, TargetSpec
 
 _instance = None
 
