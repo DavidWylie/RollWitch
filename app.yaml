@@ -1,4 +1,5 @@
 runtime: python38
 entrypoint: python -m roll_witch.main
+instance_class: F1
 manual_scaling:
   instances: 1
