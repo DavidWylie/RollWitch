@@ -15,6 +15,10 @@ async def handle_roller(request):
     return {"output": None}
 
 
+async def warmup(request):
+    return web.Response()
+
+
 async def start_app():
     app = web.Application()
 
@@ -25,6 +29,7 @@ async def start_app():
     app.router.add_get("/", handle)
     app.router.add_post("/roll", roller.roll)
     app.router.add_get("/roll", handle_roller)
+    app.router.add_get("/_ah/warmup", warmup)
     runner = web.AppRunner(app)
     await runner.setup()
 
