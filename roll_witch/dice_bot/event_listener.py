@@ -1,13 +1,10 @@
 import discord
-from roll_witch.rolling.operation import OperationParser
 from roll_witch.rolling.command import get_command
 
 
 class EventListenerClient(discord.Client):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.operation_parser = OperationParser()
-
     async def on_ready(self):
         print(f"{self.user} has connected to Discord!")
         for guild in self.guilds:
