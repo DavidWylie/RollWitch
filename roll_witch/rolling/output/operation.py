@@ -1,7 +1,7 @@
 from .base import OutputParser
 from roll_witch.rolling.roller import RollResult
 from roll_witch.rolling.protocols import Result
-from ..result import OperationResult
+from roll_witch.rolling.roller.operation_result import OperationResult
 
 
 class OperationOutputWriter(OutputParser):

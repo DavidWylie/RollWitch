@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from roll_witch.rolling.roller import StandardRoller, RollResult
 from roll_witch.rolling.roller.generator import RandomNumberGenerator
-from roll_witch.rolling.operation.spec import RollSpec
+from roll_witch.rolling.input.spec.operation import RollSpec
 
 
 class TestGenerator(RandomNumberGenerator):

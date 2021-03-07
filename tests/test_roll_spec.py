@@ -1,5 +1,5 @@
 from unittest import TestCase
-from roll_witch.rolling.operation.spec import RollSpec
+from roll_witch.rolling.input.spec.operation import RollSpec
 
 
 class TestRollSpec(TestCase):

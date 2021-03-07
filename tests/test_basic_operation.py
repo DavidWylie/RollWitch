@@ -1,14 +1,12 @@
-from roll_witch.rolling.operation.factory import standard_factory
 from unittest import TestCase
 from unittest.mock import patch
-
+from roll_witch.rolling import command
 
 class TestStandardOperation(TestCase):
     @patch("random.randint")
     def test_easy_dice_roll(self, mock_roll):
         mock_roll.side_effect = [10]
-        operation = standard_factory.get_roll_operation('basic_rpg', "t33 easy", "Another TestUser")
-        response = operation.execute()
+        response = command.basic.execute("t33 easy", "Another TestUser")
         expected_response = "Another TestUser " \
                             "Roll: [10] = 10 " \
                             "Total: 10 " \
@@ -19,8 +17,7 @@ class TestStandardOperation(TestCase):
     @patch("random.randint")
     def test_hard_dice_roll(self, mock_roll):
         mock_roll.side_effect = [10]
-        operation = standard_factory.get_roll_operation('basic_rpg', "t40 hard", "Another TestUser")
-        response = operation.execute()
+        response = command.basic.execute("t40 hard", "Another TestUser")
         expected_response = "Another TestUser " \
                             "Roll: [10] = 10 " \
                             "Total: 10 " \

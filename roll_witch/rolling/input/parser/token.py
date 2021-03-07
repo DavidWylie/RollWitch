@@ -1,9 +1,9 @@
 from .base import InputParser
-from ...spec import OperationSpec
+from roll_witch.rolling.input.spec.operation import OperationSpec
 
 
 class TokenInputParser(InputParser):
-    def parse(self, roll_string: str):
+    def parse(self, roll_string: str) -> OperationSpec:
         parts = self.sanitise_operators(roll_string).split()
         spec = OperationSpec()
         for part in parts:

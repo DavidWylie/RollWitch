@@ -10,7 +10,7 @@ async def roll(request: Request):
     data = await request.post()
     author = data["author"]
     try:
-        bot_operation = operation_parser.parse_operation(
+        bot_operation = operation_parser.get_command(
             message_content=data["roll_operation"], message_author=author
         )
         if bot_operation:

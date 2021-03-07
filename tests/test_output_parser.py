@@ -1,6 +1,6 @@
 from unittest import TestCase
-from roll_witch.rolling.operation.output import StandardOutputWriter, TargetedOutputWriter
-from roll_witch.rolling.operation.spec import RollSpec
+from roll_witch.rolling.output import StandardOutputWriter, TargetedOutputWriter
+from roll_witch.rolling.input.spec.operation import RollSpec
 from roll_witch.rolling.roller import RollResult
 
 
