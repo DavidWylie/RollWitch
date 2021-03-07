@@ -1,4 +1,4 @@
-from . import basic, token, regex
+from . import basic, token, regex, shadow_run
 
 operations = {
     "!r-t": token,
@@ -6,7 +6,8 @@ operations = {
     "!rb": basic,
     "!r-b": basic,
     "!roll": token,
-    "!r": token
+    "!r": token,
+    "!sr": shadow_run
 }
 
 
