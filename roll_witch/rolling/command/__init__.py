@@ -21,4 +21,4 @@ def get_command(message_content: str):
         if clean_command_string.startswith(prefix):
             operation_input = message_content[len(prefix):].lstrip()
             return op_getter, operation_input
-    return None
+    return None, message_content
