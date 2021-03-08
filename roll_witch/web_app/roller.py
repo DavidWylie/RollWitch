@@ -3,6 +3,7 @@ import aiohttp_jinja2
 from aiohttp.web import Request
 from roll_witch.rolling import command
 
+
 @aiohttp_jinja2.template("roller.jinja2")
 async def roll(request: Request):
     data = await request.post()

@@ -2,6 +2,7 @@ from unittest import TestCase
 from unittest.mock import patch
 from roll_witch.rolling import command
 
+
 class TestStandardOperation(TestCase):
     @patch("random.randint")
     def test_simple_dice_roll(self, mock_roll):
