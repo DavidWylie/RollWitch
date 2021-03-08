@@ -15,7 +15,7 @@ async def roll(request: Request):
             operation_output = bot_operation.execute()
             return {"output": operation_output}
     except ValueError:
-        return {"output": f" Invalid Command"}
+        return {"output": " Invalid Command"}
     except Exception as e:
         if hasattr(e, "message"):
             msg = e.message
