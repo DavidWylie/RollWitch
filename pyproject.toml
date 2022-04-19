@@ -1,5 +1,5 @@
 [tool.coverage.run]
-include = ["src/surveyor/*", "src/surveyor_aws_icons/*"]
+include = ["roll_witch/*"]
 omit = ["tests/*"]
 
 [tool.coverage.html]
