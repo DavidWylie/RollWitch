@@ -1,9 +1,7 @@
 from roll_witch.rolling.input import get_token_parser
 from roll_witch.rolling.output import OperationOutputWriter
 from roll_witch.rolling.roller import RollResult, RollSpec
-from roll_witch.rolling.roller import (
-    StandardRoller
-)
+from roll_witch.rolling.roller import StandardRoller
 from roll_witch.rolling.roller.operation_result import OperationResult
 
 
@@ -34,7 +32,5 @@ def get_spec(roll_string):
     parser = get_token_parser()
     roll_spec = parser.parse(roll_string)
     if not roll_spec.target_number:
-        roll_spec.add_part(
-            RollSpec(target_number=5, operation=None)
-        )
+        roll_spec.add_part(RollSpec(target_number=5, operation=None))
     return roll_spec

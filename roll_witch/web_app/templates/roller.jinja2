@@ -1,19 +1,43 @@
-<html>
-<p>Welcome to Roll Witch</p>
-{% if output %}
-<p>
-Roll Result: {{ output }}
-</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roll Witch</title>
+    <link rel="stylesheet" href="/static/styles.css"> </head>
+<body>
+<header>
+    <h1>Roll Witch</h1>
+    <p>Roll Witch is a simple dice roller. It can roll any number of dice with any number of sides, and can add or subtract a modifier.</p>
+</header>
 
-<form action="/roll" method="post" accept-charset="utf-8"
-      enctype="application/x-www-form-urlencoded">
+<main>
+<section>
+    {% if output %}
+        <article>
+        {% if output.error %}
+            <h3>Error</h3>
+            <p class="error">{{ output.error }}</p>
+        {% endif %}
+        <h3>Roll Request</h3>
+        <p>{{ output.roll_request }}</p>
+        <h3>Roll Result</h3>
+        <p>{{ output.roll_result }}</p>
+        </article>
+    {% endif %}
+<article>
+    <h3>Roll</h3>
+    <form action="/roll" method="post">
+        <label for="roll_operation">What would you like me to roll?</label>
+        <input type="text" id="roll_operation" name="roll_operation" required>
+        <button type="submit">Roll</button>
+    </form>
+</article>
+</section>
 
-    <label for="author">name</label>
-    <input id="author" name="author" type="text" value="" autofocus/>
-    <label for="roll_operation">What would you like me to roll?</label>
-    <input id="roll_operation" name="roll_operation" type="text" value=""/>
-
-    <input type="submit" value="Roll"/>
-</form>
+<aside>
+    <img src="/static/witch.png" alt="Roll Witch">
+</aside>
+</main>
+</body>
 </html>

@@ -7,7 +7,7 @@ operations = {
     "!r-b": basic,
     "!roll": token,
     "!r": token,
-    "!sr": shadow_run
+    "!sr": shadow_run,
 }
 
 
