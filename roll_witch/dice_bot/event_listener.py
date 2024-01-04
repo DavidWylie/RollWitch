@@ -4,7 +4,7 @@ from roll_witch.rolling.command import get_command
 
 class EventListenerClient(discord.Client):
     def __init__(self):
-        intents = discord.Intents(messages=True)
+        intents: discord.Intents = discord.Intents(messages=True, guilds=True, message_content=True )
         super().__init__(intents=intents)
 
     async def on_ready(self):
@@ -19,7 +19,11 @@ class EventListenerClient(discord.Client):
         if message.author == self.user:
             return
         try:
+            print(message)
+            print(f" Channel: {message.channel}")
+            print(f"Message: {message.content}")
             command, roll_string = get_command(message_content=message.content)
+            print(f"Command {command}")
             if command:
                 response = command.execute(
                     roll_string=roll_string,
