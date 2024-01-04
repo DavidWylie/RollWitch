@@ -19,9 +19,6 @@ class EventListenerClient(discord.Client):
         if message.author == self.user:
             return
         try:
-            print(message)
-            print(f" Channel: {message.channel}")
-            print(f"Message: {message.content}")
             command, roll_string = get_command(message_content=message.content)
             print(f"Command {command}")
             if command:
