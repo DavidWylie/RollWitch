@@ -5,9 +5,7 @@ from roll_witch.rolling.command import get_command
 class EventListenerClient(discord.Client):
     def __init__(self):
         intents: discord.Intents = discord.Intents(
-            messages=True,
-            guilds=True,
-            message_content=True
+            messages=True, guilds=True, message_content=True
         )
         super().__init__(intents=intents)
 
