@@ -3,8 +3,9 @@ from roll_witch.rolling.command import get_command
 
 
 class EventListenerClient(discord.Client):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self):
+        intents = discord.Intents(messages=True)
+        super().__init__(intents=intents)
 
     async def on_ready(self):
         print(f"{self.user} has connected to Discord!")
