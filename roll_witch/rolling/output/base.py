@@ -1,6 +1,4 @@
-from roll_witch.rolling.roller import RollResult
 from abc import ABC, abstractmethod
-
 from rolling.protocols.result import OperationResult
 
 
