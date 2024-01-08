@@ -2,29 +2,33 @@ import aiohttp_jinja2
 
 from aiohttp.web import Request
 from roll_witch.rolling import command
+from rolling.output.web_operation import WebOperationOutputWriter
 
 
 @aiohttp_jinja2.template("roller.jinja2")
 async def roll(request: Request):
     data = await request.post()
     try:
-        roll_operation = data["roll_operation"]
-        if not (roll_operation.startswith("!r")):
-            roll_operation = f"!r {roll_operation}"
-
+        roll_type = data["roll_type"]
+        roll_target = f"t{data["roll_target"]}" if data["roll_target"] else ""
+        roll_operation = f"{roll_type} {data["roll_operation"]} {roll_target}"
         bot_operation, roll_string = command.get_command(message_content=roll_operation)
+
         print(f"Roll Request: {roll_string}")
         if bot_operation:
             operation_output = bot_operation.execute(
                 roll_string=roll_string,
                 user="",
             )
-            print(f"Output: {operation_output}")
+            output_formatter = WebOperationOutputWriter()
+            output = output_formatter.write_output(
+                operation_request=roll_string,
+                result=operation_output,
+                roller=bot_operation.name,
+            )
+            print(f"Output: {output}")
             return {
-                "output": {
-                    "roll_request": roll_string,
-                    "roll_result": operation_output,
-                }
+                "output": output,
             }
     except ValueError:
         return {

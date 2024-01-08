@@ -1,23 +1,18 @@
-from .base import OutputParser
 from roll_witch.rolling.roller import RollResult
-from roll_witch.rolling.protocols import Result
-from roll_witch.rolling.roller.operation_result import OperationResult
+from ..protocols.result import OperationResult
 
 
-class OperationOutputWriter(OutputParser):
-    def write_output(self, result: Result, user: str) -> str:
-        if isinstance(result, OperationResult):
-            parts = []
-            for index, roll_result in enumerate(result.rolls):
-                operator_string = self.get_operator(index, roll_result)
-                value_string = self.get_value(roll_result)
-                parts.append(f"{operator_string}{value_string}")
+class OperationOutputWriter:
+    def write_output(self, result: OperationResult, user: str) -> str:
+        parts = []
+        for index, roll_result in enumerate(result.rolls):
+            operator_string = self.get_operator(index, roll_result)
+            value_string = self.get_value(roll_result)
+            parts.append(f"{operator_string}{value_string}")
 
-            target_string = self.get_target_string(result)
-            roll_string = "".join(parts)
-            return f"{user} Roll: {roll_string} Result: {result.total}{target_string}"
-        else:
-            raise Exception("Invalid Output parser for given data")
+        target_string = self.get_target_string(result)
+        roll_string = "".join(parts)
+        return f"{user} Roll: {roll_string} Result: {result.total}{target_string}"
 
     def get_target_string(self, result):
         if result.had_target():
