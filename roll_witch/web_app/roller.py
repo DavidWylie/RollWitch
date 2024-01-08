@@ -2,7 +2,7 @@ import aiohttp_jinja2
 
 from aiohttp.web import Request
 from roll_witch.rolling import command
-from rolling.output.web_operation import WebOperationOutputWriter
+from roll_witch.rolling.output.web_operation import WebOperationOutputWriter
 
 
 @aiohttp_jinja2.template("roller.jinja2")
