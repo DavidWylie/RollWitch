@@ -16,7 +16,7 @@ class OperationResult(Protocol):
     spec: Targetable
     met_target: bool
 
-    def append_roll_result(self, result: Result)-> None:
+    def append_roll_result(self, result: Result) -> None:
         raise Exception("Not implemented yet")
 
     def had_target(self) -> bool:

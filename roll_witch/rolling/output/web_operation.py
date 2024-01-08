@@ -24,19 +24,23 @@ class WebResult:
 
 
 class WebOperationOutputWriter:
-    def write_output(self,operation_request: str, result: OperationResult, roller: str) -> WebResult:
+    def write_output(
+        self, operation_request: str, result: OperationResult, roller: str
+    ) -> WebResult:
         roll_results = []
         for index, roll_result in enumerate(result.rolls):
             operator_string = self.get_operator(index, roll_result)
             value_string = self.get_value(roll_result)
             if value_string:
-                roll_results.append(WebRollResult(
-                    rolled=self.get_roll_string(roll_result.roll_spec),
-                    result=f"{operator_string}{value_string}",
-                    met_target=self.get_met_target_string(roll_result),
-                    target=self.get_target_string(roll_result),
-                    total=f"{roll_result.total}",
-                ))
+                roll_results.append(
+                    WebRollResult(
+                        rolled=self.get_roll_string(roll_result.roll_spec),
+                        result=f"{operator_string}{value_string}",
+                        met_target=self.get_met_target_string(roll_result),
+                        target=self.get_target_string(roll_result),
+                        total=f"{roll_result.total}",
+                    )
+                )
 
         return WebResult(
             request=operation_request,
@@ -44,13 +48,17 @@ class WebOperationOutputWriter:
             rolls=roll_results,
             total=f"{result.total}",
             target=self.get_target_string(result),
-            met_target=self.get_met_target_string(result)
+            met_target=self.get_met_target_string(result),
         )
 
     def get_roll_string(self, roll_spec: RollSpec):
-        dice_count = roll_spec.dice_count if roll_spec.dice_count else ''
-        dice_sides = f"d{roll_spec.dice_sides}" if roll_spec.dice_sides else ''
-        modifier = f"{roll_spec.operator}{roll_spec.dice_modifier}" if roll_spec.dice_modifier > 0 else ''
+        dice_count = roll_spec.dice_count if roll_spec.dice_count else ""
+        dice_sides = f"d{roll_spec.dice_sides}" if roll_spec.dice_sides else ""
+        modifier = (
+            f"{roll_spec.operator}{roll_spec.dice_modifier}"
+            if roll_spec.dice_modifier > 0
+            else ""
+        )
         return f"{dice_count}{dice_sides} {modifier}"
 
     def get_met_target_string(self, result):

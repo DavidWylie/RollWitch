@@ -1,7 +1,7 @@
 from unittest import TestCase
 from roll_witch.rolling.output import OperationOutputWriter
 from roll_witch.rolling.input.spec.operation import OperationSpec, RollSpec
-from roll_witch.rolling.roller import RollResult, OperationResult
+from roll_witch.rolling.roller import RollResult, OperationRollResults
 
 
 class TestTokenOutputWriter(TestCase):
@@ -10,7 +10,7 @@ class TestTokenOutputWriter(TestCase):
         spec = OperationSpec()
         roll_spec = RollSpec(dice_count=3, dice_sides=6, operation="+")
         spec.add_part(roll_spec)
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.append_roll(1)
         roll_result.append_roll(2)
@@ -27,7 +27,7 @@ class TestTokenOutputWriter(TestCase):
         spec = OperationSpec()
         roll_spec = RollSpec(dice_count=3, dice_sides=6, operation="+")
         spec.add_part(roll_spec)
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.append_roll(1)
         roll_result.append_roll(2)
@@ -52,7 +52,7 @@ class TestTokenOutputWriter(TestCase):
         spec = OperationSpec()
         roll_spec = RollSpec(modifier=5, operation="+")
         spec.add_part(roll_spec)
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.apply_modifier(5)
 
@@ -66,7 +66,7 @@ class TestTokenOutputWriter(TestCase):
     def test_multiple_modifier_operations(self):
         user = "Test"
         spec = OperationSpec()
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
 
         roll_spec = RollSpec(modifier=5, operation="+")
         spec.add_part(roll_spec)
@@ -94,7 +94,7 @@ class TestTokenOutputWriter(TestCase):
     def test_mixed_operation(self):
         user = "Test"
         spec = OperationSpec()
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
 
         roll_spec = RollSpec(modifier=5, operation="+")
         spec.add_part(roll_spec)
@@ -127,7 +127,7 @@ class TestTokenOutputWriter(TestCase):
         roll_spec = RollSpec(dice_count=3, dice_sides=6, operation="+")
         spec.add_part(roll_spec)
         spec.target_number = 5
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.append_roll(1)
         roll_result.append_roll(2)
@@ -153,7 +153,7 @@ class TestTokenOutputWriter(TestCase):
         roll_spec = RollSpec(dice_count=3, dice_sides=6, operation="+")
         spec.add_part(roll_spec)
         spec.target_number = 5
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.append_roll(1)
         roll_result.append_roll(2)
@@ -171,7 +171,7 @@ class TestTokenOutputWriter(TestCase):
         spec = OperationSpec()
         roll_spec = RollSpec(dice_count=3, dice_sides=6, operation="+")
         spec.add_part(roll_spec)
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.append_roll(3)
         roll_result.append_roll(2)
@@ -196,7 +196,7 @@ class TestTokenOutputWriter(TestCase):
         spec = OperationSpec()
         roll_spec = RollSpec(dice_count=3, dice_sides=6, operation="+")
         spec.add_part(roll_spec)
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.append_roll(3)
         roll_result.append_roll(2)
@@ -228,7 +228,7 @@ class TestTokenOutputWriter(TestCase):
         spec = OperationSpec()
         roll_spec = RollSpec(dice_count=3, dice_sides=6, operation="+")
         spec.add_part(roll_spec)
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.append_roll(3)
         roll_result.append_roll(2)
@@ -252,7 +252,7 @@ class TestTokenOutputWriter(TestCase):
         spec = OperationSpec()
         roll_spec = RollSpec(dice_count=3, dice_sides=6, operation="+")
         spec.add_part(roll_spec)
-        operation_result = OperationResult(spec)
+        operation_result = OperationRollResults(spec)
         roll_result = RollResult(roll_spec)
         roll_result.append_roll(3)
         roll_result.append_roll(2)
