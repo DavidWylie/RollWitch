@@ -1,10 +1,8 @@
 from roll_witch.rolling.input import get_basic_rpg_parser
 from roll_witch.rolling.output import TargetedOutputWriter
-from roll_witch.rolling.roller import TargetedRoller
+from roll_witch.rolling.roller import TargetedRoller, OperationRollResults
 from math import ceil, floor
-from rolling.protocols import Operation
-from rolling.protocols.result import OperationResult
-from rolling.roller import OperationRollResults
+from roll_witch.rolling.protocols import Operation, OperationResult
 
 
 class BasicOutputWriter(TargetedOutputWriter):

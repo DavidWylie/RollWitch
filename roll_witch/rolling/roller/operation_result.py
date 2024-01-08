@@ -1,7 +1,6 @@
-from roll_witch.rolling.input.spec.operation import OperationSpec
-from roll_witch.rolling.roller import RollResult
-from rolling.protocols import Result
-from rolling.protocols.result import OperationResult
+from ..input.spec.operation import OperationSpec
+from . import RollResult
+from ..protocols import Result, OperationResult
 
 
 class OperationRollResults(OperationResult):

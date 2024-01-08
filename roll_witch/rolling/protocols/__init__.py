@@ -1,6 +1,6 @@
 from .dice_modifier import DiceModifier
 from .dice_set import DiceSet
-from .result import Result
+from .result import Result, OperationResult
 from .targetable import Targetable
 from .operation import Operation
 
@@ -10,4 +10,5 @@ __all__ = [
     "Result",
     "Targetable",
     "Operation",
+    "OperationResult",
 ]

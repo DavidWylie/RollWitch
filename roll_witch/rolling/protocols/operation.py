@@ -1,5 +1,5 @@
 from typing import Protocol
-from rolling.protocols.result import OperationResult
+from .result import OperationResult
 
 
 class Operation(Protocol):

@@ -1,9 +1,8 @@
 from roll_witch.rolling.input import get_regex_parser
 from roll_witch.rolling.output import TargetedOutputWriter, StandardOutputWriter
 from roll_witch.rolling.roller import TargetedRoller, StandardRoller
-from rolling.protocols import Operation
-from rolling.protocols.result import OperationResult
-from rolling.roller import OperationRollResults
+from roll_witch.rolling.protocols import Operation, OperationResult
+from roll_witch.rolling.roller import OperationRollResults
 
 
 class RegexOperation(Operation):
@@ -21,6 +20,7 @@ class RegexOperation(Operation):
             result = OperationRollResults(roll_spec)
             if roll_spec.has_target():
                 result.append_roll_result(self.targeted_roller.roll(roll_spec))
+                result.met_target = self.targeted_roller.met_target(roll_spec, result.total)
             else:
                 result.append_roll_result(self.standard_roller.roll(roll_spec))
             return result

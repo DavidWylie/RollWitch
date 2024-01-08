@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from rolling.command import BasicOperation
+from roll_witch.rolling.command import BasicOperation
 
 
 class TestStandardOperation(TestCase):

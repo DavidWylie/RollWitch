@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from rolling.protocols.result import OperationResult
+from ..protocols.result import OperationResult
 
 
 class BaseOutputWriter(ABC):

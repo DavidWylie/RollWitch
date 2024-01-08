@@ -3,8 +3,7 @@ from roll_witch.rolling.output import OperationOutputWriter
 from roll_witch.rolling.roller import RollResult, RollSpec
 from roll_witch.rolling.roller import StandardRoller
 from roll_witch.rolling.roller.operation_result import OperationRollResults
-from rolling.protocols import Operation
-from rolling.protocols.result import OperationResult
+from roll_witch.rolling.protocols import Operation, OperationResult
 
 
 class ShadowRunRollResults(OperationRollResults):

@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from rolling.command.regex import RegexOperation
+from roll_witch.rolling.command.regex import RegexOperation
 
 
 class TestStandardOperation(TestCase):

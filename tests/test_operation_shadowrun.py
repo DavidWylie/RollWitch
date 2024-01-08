@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from rolling.command import ShadowRunOperation
+from roll_witch.rolling.command import ShadowRunOperation
 
 
 class TestShadowrunOperation(TestCase):

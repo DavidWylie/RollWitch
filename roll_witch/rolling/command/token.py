@@ -5,7 +5,7 @@ from roll_witch.rolling.roller import (
     TargetedRoller,
 )
 from roll_witch.rolling.roller.operation_result import OperationRollResults
-from rolling.protocols import Operation
+from roll_witch.rolling.protocols import Operation
 
 
 class TokenOperation(Operation):
