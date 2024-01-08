@@ -28,5 +28,5 @@ class TokenOperation(Operation):
 
         return result
 
-    def format_output(self, roll_result, user) -> str:
-        return self.output_parser.write_output(roll_result, user)
+    def format_output(self, result, user) -> str:
+        return self.output_parser.write_output(result, user)
