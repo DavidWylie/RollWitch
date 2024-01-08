@@ -1,7 +1,6 @@
 from dataclasses import dataclass
-from roll_witch.rolling.roller import RollResult
 from ..protocols.result import OperationResult
-from ..roller import RollSpec
+from ..roller import RollSpec, RollResult
 
 
 @dataclass
