@@ -29,7 +29,7 @@ class EventListenerClient(discord.Client):
                     user=message.author.display_name,
                 )
                 message_to_send = command.format_output(
-                    roll_result=response, user=message.author.display_name
+                    result=response, user=message.author.display_name
                 )
                 await message.channel.send(message_to_send)
         except ValueError:
