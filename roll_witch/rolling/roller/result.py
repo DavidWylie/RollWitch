@@ -39,3 +39,6 @@ class RollResult(Result):
     @property
     def operator(self):
         return self.roll_spec.operator
+
+    def had_target(self) -> bool:
+        return self.spec.has_target()

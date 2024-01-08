@@ -1,9 +1,11 @@
 from roll_witch.rolling.input.spec.operation import OperationSpec
 from roll_witch.rolling.roller import RollResult
+from rolling.protocols import Result
+from rolling.protocols.result import OperationResult
 
 
-class OperationResult:
-    rolls: [RollResult]
+class OperationRollResults(OperationResult):
+    rolls: [Result]
 
     def __init__(self, spec: OperationSpec) -> None:
         super().__init__()
@@ -13,11 +15,15 @@ class OperationResult:
         self.spec = spec
         self.met_target = False
 
-    def append_roll_result(self, result: RollResult):
+    def append_roll_result(self, result: Result):
         self._apply_roll_to_total(result)
         self.rolls.append(result)
 
-    def _apply_roll_to_total(self, result: RollResult):
+    def _apply_roll_to_total(self, result: Result):
+        if isinstance(result, RollResult):
+            self._apply_roll_result_to_total(result)
+
+    def _apply_roll_result_to_total(self, result):
         if result.roll_spec.operator == "+":
             self.total += result.total
             self.roll_total += result.roll_total

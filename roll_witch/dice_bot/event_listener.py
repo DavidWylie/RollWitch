@@ -28,7 +28,10 @@ class EventListenerClient(discord.Client):
                     roll_string=roll_string,
                     user=message.author.display_name,
                 )
-                await message.channel.send(response)
+                message_to_send = command.format_output(
+                    roll_result=response, user=message.author.display_name
+                )
+                await message.channel.send(message_to_send)
         except ValueError:
             await message.channel.send(
                 f" {message.author.display_name}: Invalid Command"

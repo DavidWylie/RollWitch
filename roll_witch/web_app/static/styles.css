@@ -29,6 +29,7 @@ form {
 
 label {
     margin-bottom: 5px; /* Adds spacing between label and input */
+    margin-right: 5px; /* Adds spacing between label and input */
 }
 
 input[type="text"] {
@@ -36,6 +37,20 @@ input[type="text"] {
     border: 1px solid #ccc; /* Creates a visible border */
     border-radius: 5px; /* Softens corners */
     margin-bottom: 10px; /* Adds spacing below input */
+    min-width: 200px; /* Ensures input field is wide enough */
+}
+
+select {
+    padding: 10px; /* Adds padding to input field */
+    border: 1px solid #ccc; /* Creates a visible border */
+    border-radius: 5px; /* Softens corners */
+    margin-bottom: 10px; /* Adds spacing below input */
+    min-width: 200px;
+}
+
+fieldset {
+    margin-bottom: 10px; /* Adds spacing below fieldset */
+    display: grid;
 }
 
 button[type="submit"] {
@@ -45,6 +60,7 @@ button[type="submit"] {
     border: none; /* Removes default border */
     border-radius: 5px; /* Softens corners */
     cursor: pointer; /* Indicates clickability */
+    width: 100%
 }
 
 main section {
@@ -170,4 +186,14 @@ a:hover {
   .article {
     width: 60%;
   }
+}
+
+.Success {
+    color: green;
+    font-weight: bold;
+}
+
+.Failure {
+    color: red;
+    font-weight: bold;
 }

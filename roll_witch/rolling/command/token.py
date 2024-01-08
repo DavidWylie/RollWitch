@@ -4,25 +4,29 @@ from roll_witch.rolling.roller import (
     StandardRoller,
     TargetedRoller,
 )
-from roll_witch.rolling.roller.operation_result import OperationResult
+from roll_witch.rolling.roller.operation_result import OperationRollResults
+from rolling.protocols import Operation
 
 
-def execute(roll_string: str, user: str):
-    spec = get_spec(roll_string)
-    roller = StandardRoller()
-    target_roller = TargetedRoller()
-    output_parser = OperationOutputWriter()
-    result = OperationResult(spec)
-    for part in spec.parts:
-        result.append_roll_result(roller.roll(part))
+class TokenOperation(Operation):
+    def __init__(self):
+        super().__init__()
+        self.name = "Standard Dice Roll"
+        self.parser = get_token_parser()
+        self.roller = StandardRoller()
+        self.target_roller = TargetedRoller()
+        self.output_parser = OperationOutputWriter()
 
-    if spec.has_target():
-        result.met_target = target_roller.met_target(spec, result.total)
+    def execute(self, roll_string: str, user: str):
+        spec = self.parser.parse(roll_string)
+        result = OperationRollResults(spec)
+        for part in spec.parts:
+            result.append_roll_result(self.roller.roll(part))
 
-    return output_parser.write_output(result, user)
+        if spec.has_target():
+            result.met_target = self.target_roller.met_target(spec, result.total)
 
+        return result
 
-def get_spec(roll_string):
-    parser = get_token_parser()
-    roll_spec = parser.parse(roll_string)
-    return roll_spec
+    def format_output(self, roll_result, user) -> str:
+        return self.output_parser.write_output(roll_result, user)

@@ -19,18 +19,43 @@
             <h3>Error</h3>
             <p class="error">{{ output.error }}</p>
         {% endif %}
-        <h3>Roll Request</h3>
-        <p>{{ output.roll_request }}</p>
-        <h3>Roll Result</h3>
-        <p>{{ output.roll_result }}</p>
+        <div><h3>{{ output.roller }}</h3><span>{{ output.request }}</span></div>
+        <div><h3>Result</h3><span class="{{output.met_target}}">{{ output.total }} {{ output.target }}{{output.met_target}}</span></div>
+        <h3>Breakdown</h3>
+        <table>
+            <tr>
+                <th>Total</th>
+                <th>Dice Rolled</th>
+                <th>Result</th>
+            </tr>
+        {% for roll in output.rolls %}
+            <tr>
+                <td>{{ roll.total }}</td>
+                <td>{{ roll.rolled }}</td>
+                <td>{{ roll.result }}</td>
+            </tr>
+        {% endfor %}
+        </table>
         </article>
     {% endif %}
 <article>
-    <h3>Roll</h3>
     <form action="/roll" method="post">
-        <label for="roll_operation">What would you like me to roll?</label>
-        <input type="text" id="roll_operation" name="roll_operation" required>
-        <button type="submit">Roll</button>
+        <fieldset>
+            <legend>What would you like to Roll now?</legend>
+            <label for="roll_type">Roll Type</label>
+            <select id="roll_type" name="roll_type">
+                <option selected="selected" value="!r">Standard</option>
+                <option value="!sr">Shadow Run</option>
+            </select>
+            <br/>
+            <label for="roll_operation">Roll Operation</label>
+            <input type="text" id="roll_operation" name="roll_operation" required>
+            <br/>
+            <label for="target">Target Number</label>
+            <input type="text" id="roll_target" name="roll_target">
+            <br/>
+            <button type="submit">Roll</button>
+        </fieldset>
     </form>
 </article>
 </section>

@@ -1,13 +1,17 @@
 from . import basic, token, regex, shadow_run
+from .basic import BasicOperation
+from .regex import RegexOperation
+from .shadow_run import ShadowRunOperation
+from .token import TokenOperation
 
 operations = {
-    "!r-t": token,
-    "!r-r": regex,
-    "!rb": basic,
-    "!r-b": basic,
-    "!roll": token,
-    "!r": token,
-    "!sr": shadow_run,
+    "!r-t": TokenOperation(),
+    "!r-r": RegexOperation(),
+    "!rb": BasicOperation(),
+    "!r-b": BasicOperation(),
+    "!roll": TokenOperation(),
+    "!r": TokenOperation(),
+    "!sr": ShadowRunOperation()
 }
 
 
